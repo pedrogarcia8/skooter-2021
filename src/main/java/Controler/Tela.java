@@ -262,7 +262,7 @@ public class Tela extends javax.swing.JFrame implements KeyListener {
             if(this.eElementos.get(i).getDestroy()){
                 if((this.hHero.getPosicao().getLinha()+1 == this.eElementos.get(i).getPosicao().getLinha())  &&
                    (this.hHero.getPosicao().getColuna()  == this.eElementos.get(i).getPosicao().getColuna()) && 
-                   (tecla == "DOWN")){         
+                   ("DOWN".equals(tecla))){         
                         if(this.verificaSePodeMover("DOWN")){
                             this.eElementos.get(i).moveDown();
                             break;
@@ -270,7 +270,7 @@ public class Tela extends javax.swing.JFrame implements KeyListener {
                     }else{
                         if((this.hHero.getPosicao().getLinha()-1 == this.eElementos.get(i).getPosicao().getLinha())  &&
                            (hHero.getPosicao().getColuna()       == this.eElementos.get(i).getPosicao().getColuna()) && 
-                           (tecla == "UP")){
+                           ("UP".equals(tecla))){
                                 if(this.verificaSePodeMover("UP")){
                                     this.eElementos.get(i).moveUp();
                                     break;
@@ -278,7 +278,7 @@ public class Tela extends javax.swing.JFrame implements KeyListener {
                         }else{
                             if((hHero.getPosicao().getLinha()     == this.eElementos.get(i).getPosicao().getLinha())  &&
                                (hHero.getPosicao().getColuna()+1  == this.eElementos.get(i).getPosicao().getColuna()) && 
-                               (tecla == "RIGHT")){
+                               ("RIGHT".equals(tecla))){
                                     if(this.verificaSePodeMover("RIGHT")){
                                         this.eElementos.get(i).moveRight();
                                         break;
@@ -286,7 +286,7 @@ public class Tela extends javax.swing.JFrame implements KeyListener {
                             }else{
                                 if((hHero.getPosicao().getLinha()     == this.eElementos.get(i).getPosicao().getLinha())  &&
                                    (hHero.getPosicao().getColuna()-1  == this.eElementos.get(i).getPosicao().getColuna()) && 
-                                   (tecla == "LEFT")){
+                                   ("LEFT".equals(tecla))){
                                         if(this.verificaSePodeMover("LEFT")){
                                             this.eElementos.get(i).moveLeft();
                                             break;
@@ -336,15 +336,15 @@ public class Tela extends javax.swing.JFrame implements KeyListener {
     private boolean verificaSePodeMover(String direcao){
         int i = 0;
         for(i = 0; i < this.eElementos.size(); i++){
-            if(direcao == "DOWN"){
+            if("DOWN".equals(direcao)){
                 if(this.eElementos.get(i).getPosicao().getLinha() == this.hHero.getPosicao().getLinha()+2 &&
                    this.eElementos.get(i).getPosicao().getColuna() == this.hHero.getPosicao().getColuna())
                         break;
-            }else if(direcao == "UP"){
+            }else if("UP".equals(direcao)){
                 if(this.eElementos.get(i).getPosicao().getLinha() == this.hHero.getPosicao().getLinha()-2 &&
                    this.eElementos.get(i).getPosicao().getColuna() == this.hHero.getPosicao().getColuna())
                         break;
-            }else if(direcao == "LEFT"){
+            }else if("LEFT".equals(direcao)){
                 if(this.eElementos.get(i).getPosicao().getLinha() == this.hHero.getPosicao().getLinha() &&
                    this.eElementos.get(i).getPosicao().getColuna() == this.hHero.getPosicao().getColuna()-2)
                         break;
@@ -446,26 +446,26 @@ public class Tela extends javax.swing.JFrame implements KeyListener {
             if(this.eElementos.get(i).isArrow()){
                 if(((this.hHero.getPosicao().getLinha() == this.eElementos.get(i).getPosicao().getLinha())  &&
                    (this.hHero.getPosicao().getColuna()-1  == this.eElementos.get(i).getPosicao().getColuna()) && 
-                   (this.eElementos.get(i).getArrowType() == "LEFT")) 
-                        && (tecla == "LEFT")){
+                   ("LEFT".equals(this.eElementos.get(i).getArrowType()))) 
+                        && ("LEFT".equals(tecla))){
                         this.hHero.setPosicao(this.hHero.getPosicao().getLinha(), this.hHero.getPosicao().getColuna()-1);
                         break;
                 }else if(((this.hHero.getPosicao().getLinha() == this.eElementos.get(i).getPosicao().getLinha())  &&
                          (this.hHero.getPosicao().getColuna()+1  == this.eElementos.get(i).getPosicao().getColuna()) &&
-                          (this.eElementos.get(i).getArrowType() == "RIGHT")) 
-                          && (tecla == "RIGHT")){
+                          ("RIGHT".equals(this.eElementos.get(i).getArrowType()))) 
+                          && ("RIGHT".equals(tecla))){
                             this.hHero.setPosicao(this.hHero.getPosicao().getLinha(), this.hHero.getPosicao().getColuna()+1);
                             break;
                 }else if(((this.hHero.getPosicao().getLinha()-1 == this.eElementos.get(i).getPosicao().getLinha())  &&
                          (this.hHero.getPosicao().getColuna()  == this.eElementos.get(i).getPosicao().getColuna()) && 
-                          (this.eElementos.get(i).getArrowType() == "UP"))
-                          && (tecla == "UP")){
+                          ("UP".equals(this.eElementos.get(i).getArrowType())))
+                          && ("UP".equals(tecla))){
                             this.hHero.setPosicao(this.hHero.getPosicao().getLinha()-1, this.hHero.getPosicao().getColuna());
                             break;
                 }else if(((this.hHero.getPosicao().getLinha()+1 == this.eElementos.get(i).getPosicao().getLinha())  &&
                          (this.hHero.getPosicao().getColuna()  == this.eElementos.get(i).getPosicao().getColuna()) && 
-                          (this.eElementos.get(i).getArrowType() == "DOWN"))
-                          && (tecla == "DOWN")){
+                          ("DOWN".equals(this.eElementos.get(i).getArrowType())))
+                          && ("DOWN".equals(tecla))){
                             this.hHero.setPosicao(this.hHero.getPosicao().getLinha()+1, this.hHero.getPosicao().getColuna());
                             break;
                 }
