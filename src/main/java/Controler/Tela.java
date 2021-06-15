@@ -43,7 +43,7 @@ public class Tela extends javax.swing.JFrame implements KeyListener {
         this.pinkRobot = primeiraFase.getPinkRobot();
         this.greenRobot = primeiraFase.getGreenRobot();
         
-        Fase segundaFase = new Fase(2);
+        /*Fase segundaFase = new Fase(2);
         this.eElementos = segundaFase.getFase();
         this.hHero = segundaFase.getHero();
         this.hHero = segundaFase.getHero(); 
@@ -59,7 +59,7 @@ public class Tela extends javax.swing.JFrame implements KeyListener {
         this.blueRobot = terceiraFase.getBlueRobot();
         this.yellowRobot = terceiraFase.getYellowRobot(); 
         this.pinkRobot = terceiraFase.getPinkRobot();
-        this.greenRobot = terceiraFase.getGreenRobot();
+        this.greenRobot = terceiraFase.getGreenRobot();*/
         
     }
 
