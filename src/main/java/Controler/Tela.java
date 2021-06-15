@@ -35,13 +35,13 @@ public class Tela extends javax.swing.JFrame implements KeyListener {
         /*Este array vai guardar os elementos graficos*/
         this.eElementos = new ArrayList<Elemento>(121);
       
-        /*Fase primeiraFase = new Fase(1);
+        Fase primeiraFase = new Fase(1);
         this.eElementos = primeiraFase.getFase();
         this.hHero = primeiraFase.getHero(); 
         this.blueRobot = primeiraFase.getBlueRobot();
         this.yellowRobot = primeiraFase.getYellowRobot(); 
         this.pinkRobot = primeiraFase.getPinkRobot();
-        this.greenRobot = primeiraFase.getGreenRobot();*/
+        this.greenRobot = primeiraFase.getGreenRobot();
         
         Fase segundaFase = new Fase(2);
         this.eElementos = segundaFase.getFase();
@@ -52,14 +52,14 @@ public class Tela extends javax.swing.JFrame implements KeyListener {
         this.pinkRobot = segundaFase.getPinkRobot();
         this.greenRobot = segundaFase.getGreenRobot();
         
-        /*Fase terceiraFase = new Fase(3);
+        Fase terceiraFase = new Fase(3);
         this.eElementos = terceiraFase.getFase();
         this.hHero = terceiraFase.getHero();
         this.hHero = terceiraFase.getHero(); 
         this.blueRobot = terceiraFase.getBlueRobot();
         this.yellowRobot = terceiraFase.getYellowRobot(); 
         this.pinkRobot = terceiraFase.getPinkRobot();
-        this.greenRobot = terceiraFase.getGreenRobot();*/
+        this.greenRobot = terceiraFase.getGreenRobot();
         
     }
 
