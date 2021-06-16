@@ -11,6 +11,8 @@ public class Posicao implements Serializable{
 
     public Posicao(int linha, int coluna){
         this.setPosicao(linha,coluna);
+        this.linhaAnterior = linha;
+        this.colunaAnterior = coluna;
     }
 
     public boolean setPosicao(int linha, int coluna){       

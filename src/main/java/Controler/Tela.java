@@ -195,7 +195,7 @@ public class Tela extends javax.swing.JFrame implements KeyListener {
         }
         
         /*Se o heroi for para uma posicao invalida, sobre um elemento intransponivel, volta para onde estava*/
-        if (!cControle.ehPosicaoValida(this.eElementos,hHero.getPosicao())) {
+        if (!cControle.ehPosicaoValida(this.eElementos,hHero)) {
             hHero.voltaAUltimaPosicao();
         }
 
@@ -361,86 +361,6 @@ public class Tela extends javax.swing.JFrame implements KeyListener {
             return false;
     }
     
-    private void moveMonster(Monster monster){
-        boolean right = false;
-        boolean left = false;
-        boolean up = false;
-        boolean down = false;
-        int i;
-        
-        for(i = 0; i < this.eElementos.size(); i++){
-            if((monster.getPosicao().getLinha()-1 == this.eElementos.get(i).getPosicao().getLinha())  &&
-            (monster.getPosicao().getColuna()  == this.eElementos.get(i).getPosicao().getColuna())){
-                System.out.println("DOWN");
-                if(monster.getPosicao().getLinha() != 10){
-                    down = true;
-                    right = false;
-                    left = false;
-                    up = false;
-                    break;
-                }     
-            }
-        }
-        for(i = 0; i < this.eElementos.size(); i++){
-            if((monster.getPosicao().getLinha()+1 == this.eElementos.get(i).getPosicao().getLinha())  &&
-              (monster.getPosicao().getColuna()  == this.eElementos.get(i).getPosicao().getColuna())){
-                System.out.println("UP");
-                if(monster.getPosicao().getLinha() != 0){
-                    up = true;
-                    down = false;
-                    right = false;
-                    left = false;
-                    break;
-                }
-            }             
-        }
-        for(i = 0; i < this.eElementos.size(); i++){
-            if((monster.getPosicao().getLinha()   == this.eElementos.get(i).getPosicao().getLinha())  &&
-            (monster.getPosicao().getColuna()-1  == this.eElementos.get(i).getPosicao().getColuna())){
-                System.out.println("RIGHT");
-                if(monster.getPosicao().getColuna() != 10){
-                    right = true;
-                    down = false;
-                    left = false;
-                    up = false;
-                    break;
-                }
-            }     
-        }
-        for(i = 0; i < this.eElementos.size(); i++){
-            if((monster.getPosicao().getLinha()   == this.eElementos.get(i).getPosicao().getLinha())  &&
-            (monster.getPosicao().getColuna()+1  == this.eElementos.get(i).getPosicao().getColuna())){
-                System.out.println("LEFT");
-                if(monster.getPosicao().getColuna() != 0){
-                    left = true;
-                    down = false;
-                    right = false;
-                    up = false;
-                    break;
-                }
-            }     
-        }
-        
-        System.out.println("UP: "+up+" DOWN: "+down+" LEFT: "+left+" RIGHT: "+right);
-        System.out.println("--------------------------------------");
-        
-        if(right && !left && !up && !down)
-            monster.moveRight();
-        else if(!right && left && !up && !down)
-            monster.moveLeft();
-        else if(!right && !left && up && !down)
-            monster.moveUp();
-        else if(!right && !left && !up && down)
-            monster.moveDown();
-    }
-    
-    private void moveAllMonsters(){
-        this.moveMonster(this.pinkRobot);
-        this.moveMonster(this.blueRobot);
-        this.moveMonster(this.yellowRobot);
-        this.moveMonster(this.greenRobot);
-    }
-    
     private void moveArrow(String tecla){
         for(int i = 0; i < this.eElementos.size(); i++){
             if(this.eElementos.get(i).isArrow()){
@@ -471,5 +391,9 @@ public class Tela extends javax.swing.JFrame implements KeyListener {
                 }
             }
         }
+    }
+
+    public boolean ehPosicaoValida(Monster monster) {
+        return cControle.ehPosicaoValida(this.eElementos, monster);
     }
 }
