@@ -19,6 +19,7 @@ public class Tela extends javax.swing.JFrame implements KeyListener {
     private ArrayList<Elemento> eElementos;
     private ControleDeJogo cControle = new ControleDeJogo();
     private Graphics g2;
+    private Fase fase;
     /**
      * Creates new form
      */
@@ -35,32 +36,13 @@ public class Tela extends javax.swing.JFrame implements KeyListener {
         /*Este array vai guardar os elementos graficos*/
         this.eElementos = new ArrayList<Elemento>(121);
       
-        Fase primeiraFase = new Fase(1);
-        this.eElementos = primeiraFase.getFase();
-        this.hHero = primeiraFase.getHero(); 
-        this.blueRobot = primeiraFase.getBlueRobot();
-        this.yellowRobot = primeiraFase.getYellowRobot(); 
-        this.pinkRobot = primeiraFase.getPinkRobot();
-        this.greenRobot = primeiraFase.getGreenRobot();
-        
-        /*Fase segundaFase = new Fase(2);
-        this.eElementos = segundaFase.getFase();
-        this.hHero = segundaFase.getHero();
-        this.hHero = segundaFase.getHero(); 
-        this.blueRobot = segundaFase.getBlueRobot();
-        this.yellowRobot = segundaFase.getYellowRobot(); 
-        this.pinkRobot = segundaFase.getPinkRobot();
-        this.greenRobot = segundaFase.getGreenRobot();
-        
-        Fase terceiraFase = new Fase(3);
-        this.eElementos = terceiraFase.getFase();
-        this.hHero = terceiraFase.getHero();
-        this.hHero = terceiraFase.getHero(); 
-        this.blueRobot = terceiraFase.getBlueRobot();
-        this.yellowRobot = terceiraFase.getYellowRobot(); 
-        this.pinkRobot = terceiraFase.getPinkRobot();
-        this.greenRobot = terceiraFase.getGreenRobot();*/
-        
+        fase = new Fase(1);
+        this.eElementos = this.fase.getFase();
+        this.hHero = this.fase.getHero(); 
+        this.blueRobot = this.fase.getBlueRobot();
+        this.yellowRobot = this.fase.getYellowRobot(); 
+        this.pinkRobot = this.fase.getPinkRobot();
+        this.greenRobot = this.fase.getGreenRobot();
     }
 
 /*--------------------------------------------------*/
@@ -161,9 +143,9 @@ public class Tela extends javax.swing.JFrame implements KeyListener {
             this.moveArrow("RIGHT");
             hHero.moveRight();
         } else if (e.getKeyCode() == KeyEvent.VK_R) {
-            Fase primeiraFase = new Fase(1);
-            this.eElementos = primeiraFase.getFase();
-            hHero = primeiraFase.getHero();
+            this.fase = new Fase(1);
+            this.eElementos = this.fase.getFase();
+            this.hHero = this.fase.getHero();
         }else if(e.getKeyCode() == KeyEvent.VK_SPACE){
             for(int i = 0; i < this.eElementos.size(); i++){
                 if(this.eElementos.get(i).getDestroy()){
