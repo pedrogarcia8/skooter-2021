@@ -119,7 +119,7 @@ public class Tela extends javax.swing.JFrame implements KeyListener {
     public void keyPressed(KeyEvent e) {
         /*Movimento do heroi via teclado*/
         if (e.getKeyCode() == KeyEvent.VK_UP) {
-            moveBlackDiamondSquare(e, "UP");   
+            moveSquare(e, "UP");   
 //            try {
 //                //killHero(e);
 //            } catch (AWTException ex) {
@@ -128,7 +128,7 @@ public class Tela extends javax.swing.JFrame implements KeyListener {
             this.moveArrow("UP");
             hHero.moveUp();
         } else if (e.getKeyCode() == KeyEvent.VK_DOWN) {
-            moveBlackDiamondSquare(e, "DOWN");
+            moveSquare(e, "DOWN");
 //            try {
 //                //killHero(e);
 //            } catch (AWTException ex) {
@@ -137,7 +137,7 @@ public class Tela extends javax.swing.JFrame implements KeyListener {
             this.moveArrow("DOWN");
             hHero.moveDown();
         } else if (e.getKeyCode() == KeyEvent.VK_LEFT) {
-            moveBlackDiamondSquare(e, "LEFT");
+            moveSquare(e, "LEFT");
 //            try {
 //                //killHero(e);
 //            } catch (AWTException ex) {
@@ -146,7 +146,7 @@ public class Tela extends javax.swing.JFrame implements KeyListener {
             this.moveArrow("LEFT");
             hHero.moveLeft();
         } else if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
-            moveBlackDiamondSquare(e, "RIGHT");
+            moveSquare(e, "RIGHT");
 //            try {
 //                //killHero(e);
 //            } catch (AWTException ex) {
@@ -155,7 +155,7 @@ public class Tela extends javax.swing.JFrame implements KeyListener {
             this.moveArrow("RIGHT");
             hHero.moveRight();
         } else if (e.getKeyCode() == KeyEvent.VK_R) {
-            this.eElementos = this.fase.getElementosFase(1);
+            this.eElementos = this.fase.getElementosFase(4);
             this.hHero = this.fase.getHero();
         }else if(e.getKeyCode() == KeyEvent.VK_SPACE){
             for(int i = 0; i < this.eElementos.size(); i++){
@@ -250,7 +250,7 @@ public class Tela extends javax.swing.JFrame implements KeyListener {
     public void keyReleased(KeyEvent e) {
     }
     
-    public void moveBlackDiamondSquare(KeyEvent e, String tecla){
+    public void moveSquare(KeyEvent e, String tecla){
         for(int i = 0; i < this.eElementos.size(); i++){
             if(this.eElementos.get(i).getDestroy()){
                 if((this.hHero.getPosicao().getLinha()+1 == this.eElementos.get(i).getPosicao().getLinha())  &&

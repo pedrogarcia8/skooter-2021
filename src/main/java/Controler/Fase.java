@@ -402,7 +402,107 @@ public class Fase {
     }
     
     private void cenarioQuartaFase() {
+        this.eElementos.clear();
+        this.iFaseAtual = 4;
+        this.hHero = new Hero("hero.png");  
+        this.hHero.setPosicao(4, 5);
+        this.addElemento(this.hHero);
         
+        GreenSquare greenSquare;
+        boolean alternancia = true;
+        for(int i = 1; i <= 9; i++){
+            for(int j = 1; j <= 9; j++){
+                if(alternancia == true){
+                    greenSquare = new GreenSquare("greenSquare.png");
+                    greenSquare.setPosicao(i, j);
+                    this.addElemento(greenSquare);
+                }
+                alternancia = !alternancia;
+            }
+        }
+        OrangeSquare orangeSquare;
+        orangeSquare = new OrangeSquare("orangeSquare.png");
+        orangeSquare.setPosicao(0, 3);
+        this.addElemento(orangeSquare);
+        orangeSquare = new OrangeSquare("orangeSquare.png");
+        orangeSquare.setPosicao(0, 7);
+        this.addElemento(orangeSquare);
+        orangeSquare = new OrangeSquare("orangeSquare.png");
+        orangeSquare.setPosicao(1, 0);
+        this.addElemento(orangeSquare);
+        orangeSquare = new OrangeSquare("orangeSquare.png");
+        orangeSquare.setPosicao(1, 8);
+        this.addElemento(orangeSquare);
+        orangeSquare = new OrangeSquare("orangeSquare.png");
+        orangeSquare.setPosicao(2, 5);
+        this.addElemento(orangeSquare);
+        orangeSquare = new OrangeSquare("orangeSquare.png");
+        orangeSquare.setPosicao(3, 2);
+        this.addElemento(orangeSquare);
+        orangeSquare = new OrangeSquare("orangeSquare.png");
+        orangeSquare.setPosicao(3, 10);
+        this.addElemento(orangeSquare);
+        orangeSquare = new OrangeSquare("orangeSquare.png");
+        orangeSquare.setPosicao(5, 2);
+        this.addElemento(orangeSquare);
+        orangeSquare = new OrangeSquare("orangeSquare.png");
+        orangeSquare.setPosicao(5, 8);
+        this.addElemento(orangeSquare);
+        orangeSquare = new OrangeSquare("orangeSquare.png");
+        orangeSquare.setPosicao(6, 3);
+        this.addElemento(orangeSquare);
+        orangeSquare = new OrangeSquare("orangeSquare.png");
+        orangeSquare.setPosicao(7, 0);
+        this.addElemento(orangeSquare);
+//        0,3;7 1,0;8 2,5 3,2;10 5,2;8 6,3 7,0 8,1;7;10 10,1
+        orangeSquare = new OrangeSquare("orangeSquare.png");
+        orangeSquare.setPosicao(8, 1);
+        this.addElemento(orangeSquare);
+        orangeSquare = new OrangeSquare("orangeSquare.png");
+        orangeSquare.setPosicao(8, 7);
+        this.addElemento(orangeSquare);
+        orangeSquare = new OrangeSquare("orangeSquare.png");
+        orangeSquare.setPosicao(8, 10);
+        this.addElemento(orangeSquare);
+        orangeSquare = new OrangeSquare("orangeSquare.png");
+        orangeSquare.setPosicao(10, 1);
+        this.addElemento(orangeSquare);
+
+        //Desenhando o cacho de uva
+        BunchOfGrapes bunchOfGrapes = new BunchOfGrapes("bunchOfGrapes.png");
+        bunchOfGrapes.setPosicao(0, 0);
+        this.addElemento(bunchOfGrapes); 
+        
+        //Desenhando o mamão
+        Papaya papaya = new Papaya("papaya.png");
+        papaya.setPosicao(0, 10);
+        this.addElemento(papaya);
+        
+        //Desenhando o morango
+        Strawberry strawberry = new Strawberry("strawberry.png");
+        strawberry.setPosicao(10, 0);
+        this.addElemento(strawberry);
+        
+        //Desenhando a cereja
+        Cherry cherry = new Cherry("cherry.png");
+        cherry.setPosicao(10, 10);
+        this.addElemento(cherry);
+        
+        this.blueRobot = new Monster("blueRobot.png");
+        this.blueRobot.setPosicao(5, 10);
+        this.addElemento(this.blueRobot);
+        
+        this.yellowRobot = new Monster("yellowRobot.png");
+        this.yellowRobot.setPosicao(0, 5);
+        this.addElemento(this.yellowRobot);
+        
+        this.pinkRobot = new Monster("pinkRobot.png");
+        this.pinkRobot.setPosicao(10, 5);
+        this.addElemento(this.pinkRobot);
+        
+        this.greenRobot = new Monster("greenRobot.png");
+        this.greenRobot.setPosicao(5, 0);
+        this.addElemento(this.greenRobot);
     }
     
     private void addElemento(Elemento umElemento) {
