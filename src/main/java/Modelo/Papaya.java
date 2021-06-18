@@ -6,7 +6,7 @@ public class Papaya extends Elemento{
     public Papaya(String sNomeImagePNG) {
         super(sNomeImagePNG);
         this.bColetavel = true;
-        this.iPontos = 200;
+        this.iPontos = 150;
     }
     
     public void autoDesenho(){ 

@@ -6,7 +6,7 @@ public class Cherry extends Elemento{
     public Cherry(String sNomeImagePNG) {
         super(sNomeImagePNG);
         this.bColetavel = true;
-        this.iPontos = 50;
+        this.iPontos = 200;
     }
     
     public void autoDesenho(){ 

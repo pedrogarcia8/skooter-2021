@@ -6,7 +6,7 @@ public class Strawberry extends Elemento{
     public Strawberry(String sNomeImagePNG) {
         super(sNomeImagePNG);
         this.bColetavel = true;
-        this.iPontos = 400;
+        this.iPontos = 100;
     }
     
     public void autoDesenho(){ 
