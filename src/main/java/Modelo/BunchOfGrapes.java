@@ -5,6 +5,8 @@ import Auxiliar.Desenhador;
 public class BunchOfGrapes extends Elemento {
     public BunchOfGrapes(String sNomeImagePNG) {
         super(sNomeImagePNG);
+        this.bColetavel = true;
+        this.iPontos = 100;
     }
     
     public void autoDesenho(){ 
@@ -12,5 +14,9 @@ public class BunchOfGrapes extends Elemento {
         
        // if(this.moveUp())
          //   Desenhador.getTelaDoJogo().removeElemento(this);
+    }
+    
+    public String toString(){
+        return "Uva";
     }
 }

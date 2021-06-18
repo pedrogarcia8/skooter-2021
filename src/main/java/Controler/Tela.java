@@ -82,11 +82,16 @@ public class Tela extends javax.swing.JFrame implements KeyListener {
         if (!this.eElementos.isEmpty()) {
             this.cControle.desenhaTudo(eElementos);
             this.cControle.processaTudo(eElementos);
-            if(this.cControle.estaMorto()){
+            if(this.cControle.getPontuacao() >= Consts.PONTOS_PROX_FASE){
+                this.cControle.resetaPontuacao();
+                this.resetaFase(this.fase.getFaseAtual()+1);     
+            }else if(this.cControle.estaMorto()){
                 this.cControle.resetaVida();
+                this.cControle.resetaPontuacao();
                 this.resetaFase(1);
-                System.out.println("O heroi morreu! Reiniciando o jogo!");
+                System.out.println("\nO heroi morreu! Reiniciando o jogo!\n");
             }else if(this.cControle.perdeuVida()){
+                this.cControle.resetaPontuacao();
                 this.resetaFase(this.fase.getFaseAtual());
             }
         }

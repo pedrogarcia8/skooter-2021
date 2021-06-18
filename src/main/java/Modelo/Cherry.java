@@ -5,6 +5,8 @@ import Auxiliar.Desenhador;
 public class Cherry extends Elemento{
     public Cherry(String sNomeImagePNG) {
         super(sNomeImagePNG);
+        this.bColetavel = true;
+        this.iPontos = 50;
     }
     
     public void autoDesenho(){ 
@@ -14,4 +16,7 @@ public class Cherry extends Elemento{
          //   Desenhador.getTelaDoJogo().removeElemento(this);
     }
     
+    public String toString(){
+        return "Cereja";
+    }
 }

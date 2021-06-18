@@ -35,23 +35,32 @@ public class ControleDeJogo {
             /*Verifica se o heroi se sobrepoe ao i-ésimo elemento*/
             if(hHero.getPosicao().estaNaMesmaPosicao(eTemp.getPosicao()))
                 /*Nem todos os elementos podem ser transpostos pelo heroi*/
-                if(eTemp.isbTransponivel())
+                if(eTemp.isbTransponivel()){
+                    if(eTemp.ehColetavel()){
+                        this.iPontuacao += eTemp.getPontos();
+                        System.out.println("\nItem coletado: " + eTemp.toString());
+                        System.out.println("Pontuação atual: " + this.iPontuacao + "\n");
+                    }
                     e.remove(eTemp);
+                }
         }
     }
     public boolean ehPosicaoValida(ArrayList<Elemento> e, Elemento umElemento){
         Elemento eTemp;
         Hero hHero = (Hero)e.get(0);
         
-        if(umElemento.getMortal())
+        if(umElemento.getMortal()){
             if(umElemento.getPosicao().estaNaMesmaPosicao(hHero.getPosicao())){
                 removeVida();
                 this.bPerdeuVida = !this.bPerdeuVida;
-                System.out.println("-1 vida");
-                System.out.println("Vidas restantes: " + this.getVida() + "\n");
+                System.out.println("\nVocê perdeu uma vida!");
+                if(this.iVida > 0)
+                    System.out.println("Vidas restantes: " + this.getVida() + "\n");
                 
                 return false;
             }
+        }
+        
         /*Validacao da posicao de todos os elementos com relacao a Posicao p*/
         for(int i = 1; i < e.size(); i++){ /*Olha todos os elementos*/
             eTemp = e.get(i); /*Pega o i-esimo elemento do jogo*/
@@ -80,6 +89,7 @@ public class ControleDeJogo {
 
     public void resetaVida() {
         this.iVida = Consts.NUM_VIDAS;
+        this.bPerdeuVida = false;
     }
     
     public boolean perdeuVida(){
@@ -88,5 +98,13 @@ public class ControleDeJogo {
             return true;
         }
         return false;
+    }
+    
+    public void resetaPontuacao(){
+        this.iPontuacao = 0;
+    }
+    
+    public int getPontuacao(){
+        return this.iPontuacao;
     }
 }

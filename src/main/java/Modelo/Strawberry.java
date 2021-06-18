@@ -5,6 +5,8 @@ import Auxiliar.Desenhador;
 public class Strawberry extends Elemento{
     public Strawberry(String sNomeImagePNG) {
         super(sNomeImagePNG);
+        this.bColetavel = true;
+        this.iPontos = 400;
     }
     
     public void autoDesenho(){ 
@@ -14,4 +16,7 @@ public class Strawberry extends Elemento{
            // Desenhador.getTelaDoJogo().removeElemento(this);
     }
     
+    public String toString(){
+        return "Morango";
+    }
 }
