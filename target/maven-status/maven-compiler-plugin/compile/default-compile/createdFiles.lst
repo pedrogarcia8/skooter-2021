@@ -6,7 +6,6 @@ Modelo\Main.class
 Modelo\BunchOfGrapes.class
 Modelo\FakeNews.class
 Modelo\Monster.class
-Modelo\GreenSquare.class
 Modelo\Papaya.class
 Auxiliar\Consts.class
 Auxiliar\Posicao.class
@@ -14,6 +13,7 @@ Modelo\Arrow.class
 Modelo\Hero.class
 Controler\ControleDeJogo.class
 Auxiliar\Desenhador.class
+Modelo\BlackDiamondSquare.class
 Modelo\Main$1.class
 Modelo\Strawberry.class
 Modelo\Cherry.class

@@ -1,8 +1,8 @@
 package Modelo;
 
-public class GreenSquare extends Elemento{
+public class BlackDiamondSquare extends Elemento{
     
-    public GreenSquare(String sNomeImagePNG) {
+    public BlackDiamondSquare(String sNomeImagePNG) {
         super(sNomeImagePNG);
         this.bTransponivel = false;
         this.destroy = true;

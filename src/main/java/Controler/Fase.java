@@ -67,69 +67,69 @@ public class Fase {
         this.addElemento(this.hHero);
 
         //Desenhando diamantes pretos
-        GreenSquare greenSquare;
+        BlackDiamondSquare blackDiamondSquare;
         for(int i = 3; i <= 9; i+=6){
-            greenSquare = new GreenSquare("blackDiamondSquare.png");
-            greenSquare.setPosicao(i, 0);
-            this.addElemento(greenSquare);
+            blackDiamondSquare = new BlackDiamondSquare("blackDiamondSquare.png");
+            blackDiamondSquare.setPosicao(i, 0);
+            this.addElemento(blackDiamondSquare);
         }
         
         for(int i = 0; i <= 5; i+=2){
-            greenSquare = new GreenSquare("blackDiamondSquare.png");
-            greenSquare.setPosicao(i, 1);
-            this.addElemento(greenSquare);
+            blackDiamondSquare = new BlackDiamondSquare("blackDiamondSquare.png");
+            blackDiamondSquare.setPosicao(i, 1);
+            this.addElemento(blackDiamondSquare);
         }
         
         for(int i = 1; i <= 11; i+=4){
-            greenSquare = new GreenSquare("blackDiamondSquare.png");
-            greenSquare.setPosicao(i, 2);
-            this.addElemento(greenSquare);
+            blackDiamondSquare = new BlackDiamondSquare("blackDiamondSquare.png");
+            blackDiamondSquare.setPosicao(i, 2);
+            this.addElemento(blackDiamondSquare);
         }
         
-        greenSquare = new GreenSquare("blackDiamondSquare.png");
-        greenSquare.setPosicao(8, 3);
-        this.addElemento(greenSquare);
+        blackDiamondSquare = new BlackDiamondSquare("blackDiamondSquare.png");
+        blackDiamondSquare.setPosicao(8, 3);
+        this.addElemento(blackDiamondSquare);
             
         for(int i = 0; i <= 6; i+=2){
             if(i == 4)
                 i += 2;
             
-            greenSquare = new GreenSquare("blackDiamondSquare.png");
-            greenSquare.setPosicao(i, 5);
-            this.addElemento(greenSquare);
+            blackDiamondSquare = new BlackDiamondSquare("blackDiamondSquare.png");
+            blackDiamondSquare.setPosicao(i, 5);
+            this.addElemento(blackDiamondSquare);
         }
         
         for(int i = 5; i <= 11; i+=4){
-            greenSquare = new GreenSquare("blackDiamondSquare.png");
-            greenSquare.setPosicao(i, 6);
-            this.addElemento(greenSquare);
+            blackDiamondSquare = new BlackDiamondSquare("blackDiamondSquare.png");
+            blackDiamondSquare.setPosicao(i, 6);
+            this.addElemento(blackDiamondSquare);
         }
         
         for(int i = 6; i <= 11; i+=4){
-            greenSquare = new GreenSquare("blackDiamondSquare.png");
-            greenSquare.setPosicao(i, 7);
-            this.addElemento(greenSquare);
+            blackDiamondSquare = new BlackDiamondSquare("blackDiamondSquare.png");
+            blackDiamondSquare.setPosicao(i, 7);
+            this.addElemento(blackDiamondSquare);
         }
         
         for(int i = 1; i <= 11; i+=2){
             if(i == 5)
                 i += 2;
             
-            greenSquare = new GreenSquare("blackDiamondSquare.png");
-            greenSquare.setPosicao(i, 8);
-            this.addElemento(greenSquare);
+            blackDiamondSquare = new BlackDiamondSquare("blackDiamondSquare.png");
+            blackDiamondSquare.setPosicao(i, 8);
+            this.addElemento(blackDiamondSquare);
         }
         
         for(int i = 4; i <= 11; i+=4){
-            greenSquare = new GreenSquare("blackDiamondSquare.png");
-            greenSquare.setPosicao(i, 9);
-            this.addElemento(greenSquare);
+            blackDiamondSquare = new BlackDiamondSquare("blackDiamondSquare.png");
+            blackDiamondSquare.setPosicao(i, 9);
+            this.addElemento(blackDiamondSquare);
         }
         
         for(int i = 1; i <= 11; i+=6){
-            greenSquare = new GreenSquare("blackDiamondSquare.png");
-            greenSquare.setPosicao(i, 10);
-            this.addElemento(greenSquare);
+            blackDiamondSquare = new BlackDiamondSquare("blackDiamondSquare.png");
+            blackDiamondSquare.setPosicao(i, 10);
+            this.addElemento(blackDiamondSquare);
         }
         
         OrangeSquare orangeSquare; //Desenhando quadrados laranjas
@@ -315,53 +315,53 @@ public class Fase {
         this.addElemento(this.hHero);
         
         //Desenhando diamantes pretos
-        GreenSquare greenSquare;
+        BlackDiamondSquare blackDiamondSquare;
         for(int i = 1; i <= 9; i+=1){
-            greenSquare = new GreenSquare("blackDiamondSquare.png");
-            greenSquare.setPosicao(1, i);
-            this.addElemento(greenSquare);
+            blackDiamondSquare = new BlackDiamondSquare("blackDiamondSquare.png");
+            blackDiamondSquare.setPosicao(1, i);
+            this.addElemento(blackDiamondSquare);
         }
        
         for(int i = 1; i <= 9; i+=1){
-            greenSquare = new GreenSquare("blackDiamondSquare.png");
-            greenSquare.setPosicao(9, i);
-            this.addElemento(greenSquare);
+            blackDiamondSquare = new BlackDiamondSquare("blackDiamondSquare.png");
+            blackDiamondSquare.setPosicao(9, i);
+            this.addElemento(blackDiamondSquare);
         }
         
         for(int i = 3; i <= 7; i+=1){
-            greenSquare = new GreenSquare("blackDiamondSquare.png");
-            greenSquare.setPosicao(3, i);
-            this.addElemento(greenSquare);
+            blackDiamondSquare = new BlackDiamondSquare("blackDiamondSquare.png");
+            blackDiamondSquare.setPosicao(3, i);
+            this.addElemento(blackDiamondSquare);
         }
         
         for(int i = 3; i <= 7; i+=1){
-            greenSquare = new GreenSquare("blackDiamondSquare.png");
-            greenSquare.setPosicao(7, i);
-            this.addElemento(greenSquare);
+            blackDiamondSquare = new BlackDiamondSquare("blackDiamondSquare.png");
+            blackDiamondSquare.setPosicao(7, i);
+            this.addElemento(blackDiamondSquare);
         }
         
         for(int i = 2; i <= 8; i+=1){
-            greenSquare = new GreenSquare("blackDiamondSquare.png");
-            greenSquare.setPosicao(i, 1);
-            this.addElemento(greenSquare);
+            blackDiamondSquare = new BlackDiamondSquare("blackDiamondSquare.png");
+            blackDiamondSquare.setPosicao(i, 1);
+            this.addElemento(blackDiamondSquare);
         }
         
         for(int i = 2; i <= 8; i+=1){
-            greenSquare = new GreenSquare("blackDiamondSquare.png");
-            greenSquare.setPosicao(i, 9);
-            this.addElemento(greenSquare);
+            blackDiamondSquare = new BlackDiamondSquare("blackDiamondSquare.png");
+            blackDiamondSquare.setPosicao(i, 9);
+            this.addElemento(blackDiamondSquare);
         }
         
         for(int i = 4; i <= 6; i+=1){
-            greenSquare = new GreenSquare("blackDiamondSquare.png");
-            greenSquare.setPosicao(i, 3);
-            this.addElemento(greenSquare);
+            blackDiamondSquare = new BlackDiamondSquare("blackDiamondSquare.png");
+            blackDiamondSquare.setPosicao(i, 3);
+            this.addElemento(blackDiamondSquare);
         }
         
         for(int i = 4; i <= 6; i+=1){
-            greenSquare = new GreenSquare("blackDiamondSquare.png");
-            greenSquare.setPosicao(i, 7);
-            this.addElemento(greenSquare);
+            blackDiamondSquare = new BlackDiamondSquare("blackDiamondSquare.png");
+            blackDiamondSquare.setPosicao(i, 7);
+            this.addElemento(blackDiamondSquare);
         }
         
         //Desenhando o cacho de uva
