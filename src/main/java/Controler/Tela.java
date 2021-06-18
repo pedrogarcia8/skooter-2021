@@ -120,42 +120,22 @@ public class Tela extends javax.swing.JFrame implements KeyListener {
         /*Movimento do heroi via teclado*/
         if (e.getKeyCode() == KeyEvent.VK_UP) {
             moveSquare(e, "UP");   
-//            try {
-//                //killHero(e);
-//            } catch (AWTException ex) {
-//                System.out.println(ex);
-//            }
             this.moveArrow("UP");
             hHero.moveUp();
         } else if (e.getKeyCode() == KeyEvent.VK_DOWN) {
             moveSquare(e, "DOWN");
-//            try {
-//                //killHero(e);
-//            } catch (AWTException ex) {
-//                System.out.println(ex);
-//            }
             this.moveArrow("DOWN");
             hHero.moveDown();
         } else if (e.getKeyCode() == KeyEvent.VK_LEFT) {
             moveSquare(e, "LEFT");
-//            try {
-//                //killHero(e);
-//            } catch (AWTException ex) {
-//                System.out.println(ex);
-//            }
             this.moveArrow("LEFT");
             hHero.moveLeft();
         } else if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
             moveSquare(e, "RIGHT");
-//            try {
-//                //killHero(e);
-//            } catch (AWTException ex) {
-//                System.out.println(ex);
-//            }
             this.moveArrow("RIGHT");
             hHero.moveRight();
         } else if (e.getKeyCode() == KeyEvent.VK_R) {
-            this.eElementos = this.fase.getElementosFase(4);
+            this.eElementos = this.fase.getElementosFase(1);
             this.hHero = this.fase.getHero();
         }else if(e.getKeyCode() == KeyEvent.VK_SPACE){
             for(int i = 0; i < this.eElementos.size(); i++){
@@ -296,39 +276,7 @@ public class Tela extends javax.swing.JFrame implements KeyListener {
         this.eElementos = this.fase.getElementosFase(fase);
         this.hHero = this.fase.getHero();
     }
-    
-    public void killHero(KeyEvent e) throws AWTException{
-        for(int i = 0; i < this.eElementos.size(); i++){
-            if(this.eElementos.get(i).getMortal()){
-                    if(((this.hHero.getPosicao().getLinha()+1 == this.eElementos.get(i).getPosicao().getLinha()) &&
-                       (this.hHero.getPosicao().getColuna() == this.eElementos.get(i).getPosicao().getColuna())) &&
-                       (e.getKeyCode() == KeyEvent.VK_UP)){
-                            this.cControle.removeVida();
-                            this.resetaFase(this.fase.getFaseAtual());
-                            break;
-                    }else if(((this.hHero.getPosicao().getLinha()-1 == this.eElementos.get(i).getPosicao().getLinha()) &&
-                            (this.hHero.getPosicao().getColuna() == this.eElementos.get(i).getPosicao().getColuna())) && 
-                            (e.getKeyCode() == KeyEvent.VK_DOWN)){
-                                this.cControle.removeVida();
-                                this.resetaFase(this.fase.getFaseAtual());
-                                break;
-                    }else if(((this.hHero.getPosicao().getLinha() == this.eElementos.get(i).getPosicao().getLinha()) &&
-                            (this.hHero.getPosicao().getColuna()+1 == this.eElementos.get(i).getPosicao().getColuna())) && 
-                            (e.getKeyCode() == KeyEvent.VK_RIGHT)){
-                                this.cControle.removeVida();
-                                this.resetaFase(this.fase.getFaseAtual());
-                                break;    
-                    }else if(((this.hHero.getPosicao().getLinha() == this.eElementos.get(i).getPosicao().getLinha()) &&
-                            (this.hHero.getPosicao().getColuna()-1 == this.eElementos.get(i).getPosicao().getColuna())) &&
-                            (e.getKeyCode() == KeyEvent.VK_LEFT)){
-                                this.cControle.removeVida();
-                                this.resetaFase(this.fase.getFaseAtual());
-                                break;
-                    }
-            }
-        }
-    }
-    
+        
     private void pressR(KeyEvent e) throws AWTException{
         Robot robot = new Robot();
         robot.delay(150);

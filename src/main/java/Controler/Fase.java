@@ -454,7 +454,6 @@ public class Fase {
         orangeSquare = new OrangeSquare("orangeSquare.png");
         orangeSquare.setPosicao(7, 0);
         this.addElemento(orangeSquare);
-//        0,3;7 1,0;8 2,5 3,2;10 5,2;8 6,3 7,0 8,1;7;10 10,1
         orangeSquare = new OrangeSquare("orangeSquare.png");
         orangeSquare.setPosicao(8, 1);
         this.addElemento(orangeSquare);
