@@ -11,12 +11,14 @@ public class Fase {
     private Monster pinkRobot;
     private Monster greenRobot;
     private ArrayList<Elemento> eElementos;
-    private int numeroFase;
+    private int iFaseAtual;
     
-    public Fase(int numeroFase){
-        this.numeroFase = numeroFase;
+    public Fase(){
+        this.iFaseAtual = 1;
         eElementos = new ArrayList<Elemento>(121);
-        
+    }
+    
+    public ArrayList<Elemento> getElementosFase(int numeroFase){
         switch(numeroFase) {
             case 1:
                 this.cenarioPrimeiraFase();
@@ -34,9 +36,6 @@ public class Fase {
               // code block
               break;
           }
-    }
-    
-    public ArrayList<Elemento> getFase(){
         return eElementos;
     }
     
@@ -62,6 +61,7 @@ public class Fase {
     
     private void cenarioPrimeiraFase(){
         this.eElementos.clear();
+        this.iFaseAtual = 1;
         this.hHero = new Hero("hero.png");  
         this.hHero.setPosicao(4, 4);
         this.addElemento(this.hHero);
@@ -180,6 +180,7 @@ public class Fase {
     
     private void cenarioSegundaFase(){ 
         this.eElementos.clear();
+        this.iFaseAtual = 2;
         this.hHero = new Hero("hero.png");  
         this.hHero.setPosicao(5, 5);
         this.addElemento(this.hHero);
@@ -308,6 +309,7 @@ public class Fase {
     
     private void cenarioTerceiraFase(){ 
         this.eElementos.clear();
+        this.iFaseAtual = 3;
         this.hHero = new Hero("hero.png");  
         this.hHero.setPosicao(5, 5);
         this.addElemento(this.hHero);
@@ -401,5 +403,9 @@ public class Fase {
     
     private void addElemento(Elemento umElemento) {
         eElementos.add(umElemento);
+    }
+    
+    public int getFaseAtual(){
+        return this.iFaseAtual;
     }
 }

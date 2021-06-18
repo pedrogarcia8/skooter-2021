@@ -1,5 +1,6 @@
 package Controler;
 
+import Auxiliar.Consts;
 import Modelo.Elemento;
 import Modelo.Hero;
 import Auxiliar.Posicao;
@@ -10,6 +11,16 @@ import java.util.ArrayList;
  * @author junio
  */
 public class ControleDeJogo {
+    private int iVida;
+    private int iPontuacao;
+    private boolean bPerdeuVida;
+    
+    ControleDeJogo(){
+        this.iVida = Consts.NUM_VIDAS;
+        this.iPontuacao = 0;
+        this.bPerdeuVida = false;
+    }
+    
     public void desenhaTudo(ArrayList<Elemento> e){
         for(int i = 0; i < e.size(); i++){
             e.get(i).autoDesenho();
@@ -30,6 +41,17 @@ public class ControleDeJogo {
     }
     public boolean ehPosicaoValida(ArrayList<Elemento> e, Elemento umElemento){
         Elemento eTemp;
+        Hero hHero = (Hero)e.get(0);
+        
+        if(umElemento.getMortal())
+            if(umElemento.getPosicao().estaNaMesmaPosicao(hHero.getPosicao())){
+                removeVida();
+                this.bPerdeuVida = !this.bPerdeuVida;
+                System.out.println("-1 vida");
+                System.out.println("Vidas restantes: " + this.getVida() + "\n");
+                
+                return false;
+            }
         /*Validacao da posicao de todos os elementos com relacao a Posicao p*/
         for(int i = 1; i < e.size(); i++){ /*Olha todos os elementos*/
             eTemp = e.get(i); /*Pega o i-esimo elemento do jogo*/
@@ -41,5 +63,30 @@ public class ControleDeJogo {
                     return false; /*A posicao p é invalida, pois ha um elemento (i-esimo eTemp) intransponivel lá*/
         }
         return true;
+    }
+
+    public void removeVida() {
+        this.iVida--;
+    }
+    
+    public int getVida(){
+        return this.iVida;
+    }
+    
+    public boolean estaMorto(){
+        if(getVida() < 1) return true;
+        else return false;
+    }
+
+    public void resetaVida() {
+        this.iVida = Consts.NUM_VIDAS;
+    }
+    
+    public boolean perdeuVida(){
+        if(this.bPerdeuVida == true){
+            this.bPerdeuVida = false;
+            return true;
+        }
+        return false;
     }
 }

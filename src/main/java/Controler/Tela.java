@@ -36,8 +36,8 @@ public class Tela extends javax.swing.JFrame implements KeyListener {
         /*Este array vai guardar os elementos graficos*/
         this.eElementos = new ArrayList<Elemento>(121);
       
-        fase = new Fase(1);
-        this.eElementos = this.fase.getFase();
+        this.fase = new Fase();
+        this.eElementos = this.fase.getElementosFase(1);
         this.hHero = this.fase.getHero(); 
         this.blueRobot = this.fase.getBlueRobot();
         this.yellowRobot = this.fase.getYellowRobot(); 
@@ -82,6 +82,13 @@ public class Tela extends javax.swing.JFrame implements KeyListener {
         if (!this.eElementos.isEmpty()) {
             this.cControle.desenhaTudo(eElementos);
             this.cControle.processaTudo(eElementos);
+            if(this.cControle.estaMorto()){
+                this.cControle.resetaVida();
+                this.resetaFase(1);
+                System.out.println("O heroi morreu! Reiniciando o jogo!");
+            }else if(this.cControle.perdeuVida()){
+                this.resetaFase(this.fase.getFaseAtual());
+            }
         }
 
         g.dispose();
@@ -108,43 +115,42 @@ public class Tela extends javax.swing.JFrame implements KeyListener {
         /*Movimento do heroi via teclado*/
         if (e.getKeyCode() == KeyEvent.VK_UP) {
             moveGreenSquare(e, "UP");   
-            try {
-                killHero(e);
-            } catch (AWTException ex) {
-                System.out.println(ex);
-            }
+//            try {
+//                //killHero(e);
+//            } catch (AWTException ex) {
+//                System.out.println(ex);
+//            }
             this.moveArrow("UP");
             hHero.moveUp();
         } else if (e.getKeyCode() == KeyEvent.VK_DOWN) {
             moveGreenSquare(e, "DOWN");
-            try {
-                killHero(e);
-            } catch (AWTException ex) {
-                System.out.println(ex);
-            }
+//            try {
+//                //killHero(e);
+//            } catch (AWTException ex) {
+//                System.out.println(ex);
+//            }
             this.moveArrow("DOWN");
             hHero.moveDown();
         } else if (e.getKeyCode() == KeyEvent.VK_LEFT) {
             moveGreenSquare(e, "LEFT");
-            try {
-                killHero(e);
-            } catch (AWTException ex) {
-                System.out.println(ex);
-            }
+//            try {
+//                //killHero(e);
+//            } catch (AWTException ex) {
+//                System.out.println(ex);
+//            }
             this.moveArrow("LEFT");
             hHero.moveLeft();
         } else if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
             moveGreenSquare(e, "RIGHT");
-            try {
-                killHero(e);
-            } catch (AWTException ex) {
-                System.out.println(ex);
-            }
+//            try {
+//                //killHero(e);
+//            } catch (AWTException ex) {
+//                System.out.println(ex);
+//            }
             this.moveArrow("RIGHT");
             hHero.moveRight();
         } else if (e.getKeyCode() == KeyEvent.VK_R) {
-            this.fase = new Fase(1);
-            this.eElementos = this.fase.getFase();
+            this.eElementos = this.fase.getElementosFase(1);
             this.hHero = this.fase.getHero();
         }else if(e.getKeyCode() == KeyEvent.VK_SPACE){
             for(int i = 0; i < this.eElementos.size(); i++){
@@ -281,30 +287,39 @@ public class Tela extends javax.swing.JFrame implements KeyListener {
         }
     }
     
+    private void resetaFase(int fase){
+        this.eElementos = this.fase.getElementosFase(fase);
+        this.hHero = this.fase.getHero();
+    }
+    
     public void killHero(KeyEvent e) throws AWTException{
         for(int i = 0; i < this.eElementos.size(); i++){
             if(this.eElementos.get(i).getMortal()){
                     if(((this.hHero.getPosicao().getLinha()+1 == this.eElementos.get(i).getPosicao().getLinha()) &&
                        (this.hHero.getPosicao().getColuna() == this.eElementos.get(i).getPosicao().getColuna())) &&
                        (e.getKeyCode() == KeyEvent.VK_UP)){
-                            this.pressR(e);
+                            this.cControle.removeVida();
+                            this.resetaFase(this.fase.getFaseAtual());
                             break;
                     }else if(((this.hHero.getPosicao().getLinha()-1 == this.eElementos.get(i).getPosicao().getLinha()) &&
                             (this.hHero.getPosicao().getColuna() == this.eElementos.get(i).getPosicao().getColuna())) && 
                             (e.getKeyCode() == KeyEvent.VK_DOWN)){
-                              this.pressR(e);
-                              break;
+                                this.cControle.removeVida();
+                                this.resetaFase(this.fase.getFaseAtual());
+                                break;
                     }else if(((this.hHero.getPosicao().getLinha() == this.eElementos.get(i).getPosicao().getLinha()) &&
                             (this.hHero.getPosicao().getColuna()+1 == this.eElementos.get(i).getPosicao().getColuna())) && 
                             (e.getKeyCode() == KeyEvent.VK_RIGHT)){
-                              this.pressR(e);
-                              break;    
+                                this.cControle.removeVida();
+                                this.resetaFase(this.fase.getFaseAtual());
+                                break;    
                     }else if(((this.hHero.getPosicao().getLinha() == this.eElementos.get(i).getPosicao().getLinha()) &&
-                      (this.hHero.getPosicao().getColuna()-1 == this.eElementos.get(i).getPosicao().getColuna())) &&
-                      (e.getKeyCode() == KeyEvent.VK_LEFT)){
-                                this.pressR(e);
+                            (this.hHero.getPosicao().getColuna()-1 == this.eElementos.get(i).getPosicao().getColuna())) &&
+                            (e.getKeyCode() == KeyEvent.VK_LEFT)){
+                                this.cControle.removeVida();
+                                this.resetaFase(this.fase.getFaseAtual());
                                 break;
-                    } 
+                    }
             }
         }
     }
