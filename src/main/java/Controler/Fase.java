@@ -30,7 +30,7 @@ public class Fase {
                 this.cenarioTerceiraFase();
               break;
             case 4:
-              // code block
+                this.cenarioQuartaFase();
               break;
             case 5:
               // code block
@@ -66,27 +66,27 @@ public class Fase {
         this.hHero.setPosicao(4, 4);
         this.addElemento(this.hHero);
 
-        //Desenhando quadrados verdes
+        //Desenhando diamantes pretos
         GreenSquare greenSquare;
         for(int i = 3; i <= 9; i+=6){
-            greenSquare = new GreenSquare("greenSquare.png");
+            greenSquare = new GreenSquare("blackDiamondSquare.png");
             greenSquare.setPosicao(i, 0);
             this.addElemento(greenSquare);
         }
         
         for(int i = 0; i <= 5; i+=2){
-            greenSquare = new GreenSquare("greenSquare.png");
+            greenSquare = new GreenSquare("blackDiamondSquare.png");
             greenSquare.setPosicao(i, 1);
             this.addElemento(greenSquare);
         }
         
         for(int i = 1; i <= 11; i+=4){
-            greenSquare = new GreenSquare("greenSquare.png");
+            greenSquare = new GreenSquare("blackDiamondSquare.png");
             greenSquare.setPosicao(i, 2);
             this.addElemento(greenSquare);
         }
         
-        greenSquare = new GreenSquare("greenSquare.png");
+        greenSquare = new GreenSquare("blackDiamondSquare.png");
         greenSquare.setPosicao(8, 3);
         this.addElemento(greenSquare);
             
@@ -94,19 +94,19 @@ public class Fase {
             if(i == 4)
                 i += 2;
             
-            greenSquare = new GreenSquare("greenSquare.png");
+            greenSquare = new GreenSquare("blackDiamondSquare.png");
             greenSquare.setPosicao(i, 5);
             this.addElemento(greenSquare);
         }
         
         for(int i = 5; i <= 11; i+=4){
-            greenSquare = new GreenSquare("greenSquare.png");
+            greenSquare = new GreenSquare("blackDiamondSquare.png");
             greenSquare.setPosicao(i, 6);
             this.addElemento(greenSquare);
         }
         
         for(int i = 6; i <= 11; i+=4){
-            greenSquare = new GreenSquare("greenSquare.png");
+            greenSquare = new GreenSquare("blackDiamondSquare.png");
             greenSquare.setPosicao(i, 7);
             this.addElemento(greenSquare);
         }
@@ -115,19 +115,19 @@ public class Fase {
             if(i == 5)
                 i += 2;
             
-            greenSquare = new GreenSquare("greenSquare.png");
+            greenSquare = new GreenSquare("blackDiamondSquare.png");
             greenSquare.setPosicao(i, 8);
             this.addElemento(greenSquare);
         }
         
         for(int i = 4; i <= 11; i+=4){
-            greenSquare = new GreenSquare("greenSquare.png");
+            greenSquare = new GreenSquare("blackDiamondSquare.png");
             greenSquare.setPosicao(i, 9);
             this.addElemento(greenSquare);
         }
         
         for(int i = 1; i <= 11; i+=6){
-            greenSquare = new GreenSquare("greenSquare.png");
+            greenSquare = new GreenSquare("blackDiamondSquare.png");
             greenSquare.setPosicao(i, 10);
             this.addElemento(greenSquare);
         }
@@ -314,52 +314,52 @@ public class Fase {
         this.hHero.setPosicao(5, 5);
         this.addElemento(this.hHero);
         
-        //Desenhando quadrados verdes
+        //Desenhando diamantes pretos
         GreenSquare greenSquare;
         for(int i = 1; i <= 9; i+=1){
-            greenSquare = new GreenSquare("greenSquare.png");
+            greenSquare = new GreenSquare("blackDiamondSquare.png");
             greenSquare.setPosicao(1, i);
             this.addElemento(greenSquare);
         }
        
         for(int i = 1; i <= 9; i+=1){
-            greenSquare = new GreenSquare("greenSquare.png");
+            greenSquare = new GreenSquare("blackDiamondSquare.png");
             greenSquare.setPosicao(9, i);
             this.addElemento(greenSquare);
         }
         
         for(int i = 3; i <= 7; i+=1){
-            greenSquare = new GreenSquare("greenSquare.png");
+            greenSquare = new GreenSquare("blackDiamondSquare.png");
             greenSquare.setPosicao(3, i);
             this.addElemento(greenSquare);
         }
         
         for(int i = 3; i <= 7; i+=1){
-            greenSquare = new GreenSquare("greenSquare.png");
+            greenSquare = new GreenSquare("blackDiamondSquare.png");
             greenSquare.setPosicao(7, i);
             this.addElemento(greenSquare);
         }
         
         for(int i = 2; i <= 8; i+=1){
-            greenSquare = new GreenSquare("greenSquare.png");
+            greenSquare = new GreenSquare("blackDiamondSquare.png");
             greenSquare.setPosicao(i, 1);
             this.addElemento(greenSquare);
         }
         
         for(int i = 2; i <= 8; i+=1){
-            greenSquare = new GreenSquare("greenSquare.png");
+            greenSquare = new GreenSquare("blackDiamondSquare.png");
             greenSquare.setPosicao(i, 9);
             this.addElemento(greenSquare);
         }
         
         for(int i = 4; i <= 6; i+=1){
-            greenSquare = new GreenSquare("greenSquare.png");
+            greenSquare = new GreenSquare("blackDiamondSquare.png");
             greenSquare.setPosicao(i, 3);
             this.addElemento(greenSquare);
         }
         
         for(int i = 4; i <= 6; i+=1){
-            greenSquare = new GreenSquare("greenSquare.png");
+            greenSquare = new GreenSquare("blackDiamondSquare.png");
             greenSquare.setPosicao(i, 7);
             this.addElemento(greenSquare);
         }
@@ -399,6 +399,10 @@ public class Fase {
         this.greenRobot = new Monster("greenRobot.png");
         this.greenRobot.setPosicao(10, 5);
         this.addElemento(this.greenRobot);
+    }
+    
+    private void cenarioQuartaFase() {
+        
     }
     
     private void addElemento(Elemento umElemento) {
