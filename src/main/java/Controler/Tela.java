@@ -137,7 +137,9 @@ public class Tela extends javax.swing.JFrame implements KeyListener {
         } else if (e.getKeyCode() == KeyEvent.VK_R) {
             this.eElementos = this.fase.getElementosFase(1);
             this.hHero = this.fase.getHero();
-        }else if(e.getKeyCode() == KeyEvent.VK_SPACE){
+        } else if(e.getKeyCode() == KeyEvent.VK_E){
+            System.exit(0);
+        } else if(e.getKeyCode() == KeyEvent.VK_SPACE){
             for(int i = 0; i < this.eElementos.size(); i++){
                 if(this.eElementos.get(i).getDestroy()){
                     if((this.hHero.getPosicao().getLinha()+1 == this.eElementos.get(i).getPosicao().getLinha()) &&
