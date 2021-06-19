@@ -117,29 +117,35 @@ public class Tela extends javax.swing.JFrame implements KeyListener {
     }
 
     public void keyPressed(KeyEvent e) {
+        int tecla = e.getKeyCode();
         /*Movimento do heroi via teclado*/
-        if (e.getKeyCode() == KeyEvent.VK_UP) {
+        if (tecla == KeyEvent.VK_UP) {
             moveSquare(e, "UP");   
             this.moveArrow("UP");
             hHero.moveUp();
-        } else if (e.getKeyCode() == KeyEvent.VK_DOWN) {
+        } else if (tecla == KeyEvent.VK_DOWN) {
             moveSquare(e, "DOWN");
             this.moveArrow("DOWN");
             hHero.moveDown();
-        } else if (e.getKeyCode() == KeyEvent.VK_LEFT) {
+        } else if (tecla == KeyEvent.VK_LEFT) {
             moveSquare(e, "LEFT");
             this.moveArrow("LEFT");
             hHero.moveLeft();
-        } else if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
+        } else if (tecla == KeyEvent.VK_RIGHT) {
             moveSquare(e, "RIGHT");
             this.moveArrow("RIGHT");
             hHero.moveRight();
-        } else if (e.getKeyCode() == KeyEvent.VK_R) {
+        } else if (tecla == KeyEvent.VK_R) {
             this.eElementos = this.fase.getElementosFase(1);
             this.hHero = this.fase.getHero();
-        } else if(e.getKeyCode() == KeyEvent.VK_E){
+        } else if(tecla == KeyEvent.VK_E){
+            System.out.println("\nFim de jogo!");
+            System.out.println("Pontuação: " + this.cControle.getPontuacao());
             System.exit(0);
-        } else if(e.getKeyCode() == KeyEvent.VK_SPACE){
+        } else if(tecla >= KeyEvent.VK_1 && tecla <= Consts.NUM_FASES + 48){
+            this.eElementos = this.fase.getElementosFase(tecla - 48);
+            this.hHero = this.fase.getHero();
+        } else if(tecla == KeyEvent.VK_SPACE){
             for(int i = 0; i < this.eElementos.size(); i++){
                 if(this.eElementos.get(i).getDestroy()){
                     if((this.hHero.getPosicao().getLinha()+1 == this.eElementos.get(i).getPosicao().getLinha()) &&
