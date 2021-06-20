@@ -119,19 +119,19 @@ public class Tela extends javax.swing.JFrame implements KeyListener {
     public void keyPressed(KeyEvent e) {
         int tecla = e.getKeyCode();
         /*Movimento do heroi via teclado*/
-        if (tecla == KeyEvent.VK_UP) {
+        if (tecla == KeyEvent.VK_UP || tecla == KeyEvent.VK_W) {
             moveSquare(e, "UP");   
             this.moveArrow("UP");
             hHero.moveUp();
-        } else if (tecla == KeyEvent.VK_DOWN) {
+        } else if (tecla == KeyEvent.VK_DOWN || tecla == KeyEvent.VK_S) {
             moveSquare(e, "DOWN");
             this.moveArrow("DOWN");
             hHero.moveDown();
-        } else if (tecla == KeyEvent.VK_LEFT) {
+        } else if (tecla == KeyEvent.VK_LEFT || tecla == KeyEvent.VK_A) {
             moveSquare(e, "LEFT");
             this.moveArrow("LEFT");
             hHero.moveLeft();
-        } else if (tecla == KeyEvent.VK_RIGHT) {
+        } else if (tecla == KeyEvent.VK_RIGHT || tecla == KeyEvent.VK_D) {
             moveSquare(e, "RIGHT");
             this.moveArrow("RIGHT");
             hHero.moveRight();
