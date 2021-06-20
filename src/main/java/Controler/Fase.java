@@ -33,9 +33,11 @@ public class Fase {
                 this.cenarioQuartaFase();
               break;
             case 5:
-              // code block
-              break;
-          }
+                this.cenarioFinal();
+            default:
+                this.cenarioFinal();
+              break;              
+        }
         return eElementos;
     }
     
@@ -502,6 +504,164 @@ public class Fase {
         this.greenRobot = new Monster("greenRobot.png");
         this.greenRobot.setPosicao(5, 0);
         this.addElemento(this.greenRobot);
+    }
+    
+    private void cenarioFinal() {
+        this.eElementos.clear();
+        this.iFaseAtual = 5;
+        this.hHero = new Hero("hero.png");  
+        this.hHero.setPosicao(5, 5);
+        this.addElemento(this.hHero);
+
+        //Desenhando o quadrado de cachos de uva
+        BunchOfGrapes bunchOfGrapes;
+        bunchOfGrapes = new BunchOfGrapes("bunchOfGrapes.png");
+        bunchOfGrapes.setPosicao(6, 6);
+        this.addElemento(bunchOfGrapes); 
+        bunchOfGrapes = new BunchOfGrapes("bunchOfGrapes.png");
+        bunchOfGrapes.setPosicao(7, 6);
+        this.addElemento(bunchOfGrapes); 
+        bunchOfGrapes = new BunchOfGrapes("bunchOfGrapes.png");
+        bunchOfGrapes.setPosicao(8, 6);
+        this.addElemento(bunchOfGrapes); 
+        bunchOfGrapes = new BunchOfGrapes("bunchOfGrapes.png");
+        bunchOfGrapes.setPosicao(9, 6);
+        this.addElemento(bunchOfGrapes); 
+        bunchOfGrapes = new BunchOfGrapes("bunchOfGrapes.png");
+        bunchOfGrapes.setPosicao(10, 6);
+        this.addElemento(bunchOfGrapes); 
+        bunchOfGrapes = new BunchOfGrapes("bunchOfGrapes.png");
+        bunchOfGrapes.setPosicao(6, 10);
+        this.addElemento(bunchOfGrapes); 
+        bunchOfGrapes = new BunchOfGrapes("bunchOfGrapes.png");
+        bunchOfGrapes.setPosicao(7, 10);
+        this.addElemento(bunchOfGrapes); 
+        bunchOfGrapes = new BunchOfGrapes("bunchOfGrapes.png");
+        bunchOfGrapes.setPosicao(8, 10);
+        this.addElemento(bunchOfGrapes); 
+        bunchOfGrapes = new BunchOfGrapes("bunchOfGrapes.png");
+        bunchOfGrapes.setPosicao(9, 10);
+        this.addElemento(bunchOfGrapes); 
+        bunchOfGrapes = new BunchOfGrapes("bunchOfGrapes.png");
+        bunchOfGrapes.setPosicao(10, 10);
+        this.addElemento(bunchOfGrapes); 
+        bunchOfGrapes = new BunchOfGrapes("bunchOfGrapes.png");
+        bunchOfGrapes.setPosicao(6, 7);
+        this.addElemento(bunchOfGrapes); 
+        bunchOfGrapes = new BunchOfGrapes("bunchOfGrapes.png");
+        bunchOfGrapes.setPosicao(6, 8);
+        this.addElemento(bunchOfGrapes); 
+        bunchOfGrapes = new BunchOfGrapes("bunchOfGrapes.png");
+        bunchOfGrapes.setPosicao(6, 9);
+        this.addElemento(bunchOfGrapes); 
+        bunchOfGrapes = new BunchOfGrapes("bunchOfGrapes.png");
+        bunchOfGrapes.setPosicao(10, 7);
+        this.addElemento(bunchOfGrapes); 
+        bunchOfGrapes = new BunchOfGrapes("bunchOfGrapes.png");
+        bunchOfGrapes.setPosicao(10, 8);
+        this.addElemento(bunchOfGrapes); 
+        bunchOfGrapes = new BunchOfGrapes("bunchOfGrapes.png");
+        bunchOfGrapes.setPosicao(10, 9);
+        this.addElemento(bunchOfGrapes); 
+        
+        //Desenhando o círculo de mamão
+        Papaya papaya;
+        papaya = new Papaya("papaya.png");
+        papaya.setPosicao(2, 0);
+        this.addElemento(papaya);
+        papaya = new Papaya("papaya.png");
+        papaya.setPosicao(3, 1);
+        this.addElemento(papaya);
+        papaya = new Papaya("papaya.png");
+        papaya.setPosicao(4, 2);
+        this.addElemento(papaya);
+        papaya = new Papaya("papaya.png");
+        papaya.setPosicao(3, 3);
+        this.addElemento(papaya);
+        papaya = new Papaya("papaya.png");
+        papaya.setPosicao(2, 4);
+        this.addElemento(papaya);
+        papaya = new Papaya("papaya.png");
+        papaya.setPosicao(1, 3);
+        this.addElemento(papaya);
+        papaya = new Papaya("papaya.png");
+        papaya.setPosicao(0, 2);
+        this.addElemento(papaya);
+        papaya = new Papaya("papaya.png");
+        papaya.setPosicao(1, 1);
+        this.addElemento(papaya);
+        
+        //Desenhando o X de morango
+        Strawberry strawberry;
+        strawberry = new Strawberry("strawberry.png");
+        strawberry.setPosicao(8, 2);
+        this.addElemento(strawberry);
+        strawberry = new Strawberry("strawberry.png");
+        strawberry.setPosicao(6, 0);
+        this.addElemento(strawberry);
+        strawberry = new Strawberry("strawberry.png");
+        strawberry.setPosicao(7, 1);
+        this.addElemento(strawberry);
+        strawberry = new Strawberry("strawberry.png");
+        strawberry.setPosicao(9, 3);
+        this.addElemento(strawberry);
+        strawberry = new Strawberry("strawberry.png");
+        strawberry.setPosicao(10, 4);
+        this.addElemento(strawberry);
+        strawberry = new Strawberry("strawberry.png");
+        strawberry.setPosicao(6, 4);
+        this.addElemento(strawberry);
+        strawberry = new Strawberry("strawberry.png");
+        strawberry.setPosicao(7, 3);
+        this.addElemento(strawberry);
+        strawberry = new Strawberry("strawberry.png");
+        strawberry.setPosicao(9, 1);
+        this.addElemento(strawberry);
+        strawberry = new Strawberry("strawberry.png");
+        strawberry.setPosicao(10, 0);
+        this.addElemento(strawberry);
+        
+        //Desenhando o triângulo de cereja
+        Cherry cherry;
+        cherry = new Cherry("cherry.png");
+        cherry.setPosicao(0, 8);
+        this.addElemento(cherry);
+        cherry = new Cherry("cherry.png");
+        cherry.setPosicao(1, 9);
+        this.addElemento(cherry);
+        cherry = new Cherry("cherry.png");
+        cherry.setPosicao(2, 9);
+        this.addElemento(cherry);
+        cherry = new Cherry("cherry.png");
+        cherry.setPosicao(3, 10);
+        this.addElemento(cherry);
+        cherry = new Cherry("cherry.png");
+        cherry.setPosicao(3, 10);
+        this.addElemento(cherry);
+        cherry = new Cherry("cherry.png");
+        cherry.setPosicao(4, 10);
+        this.addElemento(cherry);
+        cherry = new Cherry("cherry.png");
+        cherry.setPosicao(4, 9);
+        this.addElemento(cherry);
+        cherry = new Cherry("cherry.png");
+        cherry.setPosicao(4, 8);
+        this.addElemento(cherry);
+        cherry = new Cherry("cherry.png");
+        cherry.setPosicao(4, 7);
+        this.addElemento(cherry);
+        cherry = new Cherry("cherry.png");
+        cherry.setPosicao(4, 6);
+        this.addElemento(cherry);
+        cherry = new Cherry("cherry.png");
+        cherry.setPosicao(3, 6);
+        this.addElemento(cherry);
+        cherry = new Cherry("cherry.png");
+        cherry.setPosicao(2, 7);
+        this.addElemento(cherry);
+        cherry = new Cherry("cherry.png");
+        cherry.setPosicao(1, 7);
+        this.addElemento(cherry);
     }
     
     private void addElemento(Elemento umElemento) {
