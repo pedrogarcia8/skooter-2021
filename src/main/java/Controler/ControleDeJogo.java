@@ -49,6 +49,7 @@ public class ControleDeJogo {
         Elemento eTemp;
         Hero hHero = (Hero)e.get(0);
         
+        //Quando o monstro avança sobre o personagem
         if(umElemento.getMortal()){
             if(umElemento.getPosicao().estaNaMesmaPosicao(hHero.getPosicao())){
                 removeVida();
@@ -68,8 +69,17 @@ public class ControleDeJogo {
                 continue;
             }
             if(!eTemp.isbTransponivel())
-                if(eTemp.getPosicao().estaNaMesmaPosicao(umElemento.getPosicao()))
+                if(eTemp.getPosicao().estaNaMesmaPosicao(umElemento.getPosicao())){
+                    //Quando o personagem avança sobre o monstro
+                    if((umElemento == hHero && eTemp.getMortal())){
+                        removeVida();
+                        this.bPerdeuVida = !this.bPerdeuVida;
+                        System.out.println("\nVocê perdeu uma vida!");
+                        if(this.iVida > 0)
+                            System.out.println("Vidas restantes: " + this.getVida() + "\n");
+                    }
                     return false; /*A posicao p é invalida, pois ha um elemento (i-esimo eTemp) intransponivel lá*/
+                }
         }
         return true;
     }
