@@ -33,10 +33,7 @@ public class Fase {
                 this.cenarioQuartaFase();
               break;
             case 5:
-                this.cenarioFinal();
-            default:
-                this.cenarioFinal();
-              break;              
+                this.cenarioFinal();          
         }
         return eElementos;
     }

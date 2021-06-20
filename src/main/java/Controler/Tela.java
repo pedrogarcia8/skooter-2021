@@ -82,9 +82,13 @@ public class Tela extends javax.swing.JFrame implements KeyListener {
         if (!this.eElementos.isEmpty()) {
             this.cControle.desenhaTudo(eElementos);
             this.cControle.processaTudo(eElementos);
-            if(this.cControle.getPontuacao() >= Consts.PONTOS_PROX_FASE){
-                this.cControle.resetaPontuacao();
+            if(this.cControle.faseTerminou(eElementos)){
                 this.resetaFase(this.fase.getFaseAtual()+1);     
+                if(this.fase.getFaseAtual() == Consts.NUM_FASES){
+                    System.out.println("\nVocê zerou o jogo!");
+                    System.out.println("Pontuação deste jogo: " + this.cControle.getPontuacao());
+                }
+                else this.cControle.resetaPontuacao();
             }else if(this.cControle.estaMorto()){
                 this.cControle.resetaVida();
                 this.cControle.resetaPontuacao();
@@ -136,11 +140,12 @@ public class Tela extends javax.swing.JFrame implements KeyListener {
             this.moveArrow("RIGHT");
             hHero.moveRight();
         } else if (tecla == KeyEvent.VK_R) {
+            this.cControle.resetaPontuacao();
             this.eElementos = this.fase.getElementosFase(1);
             this.hHero = this.fase.getHero();
         } else if(tecla == KeyEvent.VK_E){
             System.out.println("\nFim de jogo!");
-            System.out.println("Pontuação: " + this.cControle.getPontuacao());
+            System.out.println("Pontuação final: " + this.cControle.getPontuacao());
             System.exit(0);
         } else if(tecla >= KeyEvent.VK_1 && tecla <= Consts.NUM_FASES + 48){
             this.eElementos = this.fase.getElementosFase(tecla - 48);

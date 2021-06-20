@@ -117,4 +117,15 @@ public class ControleDeJogo {
     public int getPontuacao(){
         return this.iPontuacao;
     }
+    
+    public boolean faseTerminou(ArrayList<Elemento> e){
+        boolean terminou = true;
+        for(int i = 1; i < e.size(); i++){
+            if(e.get(i).ehColetavel() == true){
+                terminou = false;
+                break;
+            }
+        }
+        return terminou;
+    }
 }
