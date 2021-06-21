@@ -12,17 +12,14 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 public class Robo extends Elemento implements Serializable{
-    private boolean bRight;
 
     public Robo(String sNomeImagePNG) {
         super(sNomeImagePNG);
-        bRight = true;
         this.bTransponivel = false;
         this.bMortal = true;
     }
     
     public void autoDesenho(){
         super.autoDesenho();
-        bRight = !bRight;
     }
 }
