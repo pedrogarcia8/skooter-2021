@@ -11,5 +11,4 @@ public class BlackDiamondSquare extends Elemento{
     public void autoDesenho(){ 
         super.autoDesenho();
     }
-    
 }

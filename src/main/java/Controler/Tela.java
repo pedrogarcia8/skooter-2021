@@ -82,18 +82,22 @@ public class Tela extends javax.swing.JFrame implements KeyListener {
         if (!this.eElementos.isEmpty()) {
             this.cControle.desenhaTudo(eElementos);
             this.cControle.processaTudo(eElementos);
+            //Verfica se a fase já terminou
             if(this.cControle.faseTerminou(eElementos)){
-                this.resetaFase(this.fase.getFaseAtual()+1);     
+                //Avança de fase
+                this.resetaFase(this.fase.getFaseAtual()+1);
+                //Caso a próxima fase seja a última
                 if(this.fase.getFaseAtual() == Consts.NUM_FASES){
                     System.out.println("\nVocê zerou o jogo!");
                     System.out.println("Pontuação deste jogo: " + this.cControle.getPontuacao());
                 }
-                else this.cControle.resetaPontuacao();
+            //Verifica se o jogador perdeu todas as suas vidas
             }else if(this.cControle.estaMorto()){
                 this.cControle.resetaVida();
                 this.cControle.resetaPontuacao();
                 this.resetaFase(1);
                 System.out.println("\nO heroi morreu! Reiniciando o jogo!\n");
+            //Verifica se o jogador perdeu uma vida na rodada atual
             }else if(this.cControle.perdeuVida()){
                 this.cControle.resetaPontuacao();
                 this.resetaFase(this.fase.getFaseAtual());
@@ -119,7 +123,12 @@ public class Tela extends javax.swing.JFrame implements KeyListener {
         timer.schedule(redesenhar, 0, Consts.FRAME_INTERVAL);
         
     }
-
+    
+    //Movimento do heroi pode ser feito pelas setas ou pelo WASD
+    //Tecla E finaliza o jogo
+    //Tecla R reinicia o jogo
+    //Teclas 1-9 avançama para a respectiva fase
+    //Espaço come o bloco adjacente
     public void keyPressed(KeyEvent e) {
         int tecla = e.getKeyCode();
         /*Movimento do heroi via teclado*/
@@ -145,7 +154,10 @@ public class Tela extends javax.swing.JFrame implements KeyListener {
             this.hHero = this.fase.getHero();
         } else if(tecla == KeyEvent.VK_E){
             System.out.println("\nFim de jogo!");
-            System.out.println("Pontuação final: " + this.cControle.getPontuacao());
+            System.out.println("Jogo feito por:");
+            System.out.println("Pedro Garcia");
+            System.out.println("Thiago Marafeli");
+            System.out.println("\nSua pontuação final: " + this.cControle.getPontuacao());
             System.exit(0);
         } else if(tecla >= KeyEvent.VK_1 && tecla <= Consts.NUM_FASES + 48){
             this.eElementos = this.fase.getElementosFase(tecla - 48);
@@ -288,12 +300,6 @@ public class Tela extends javax.swing.JFrame implements KeyListener {
     private void resetaFase(int fase){
         this.eElementos = this.fase.getElementosFase(fase);
         this.hHero = this.fase.getHero();
-    }
-        
-    private void pressR(KeyEvent e) throws AWTException{
-        Robot robot = new Robot();
-        robot.delay(150);
-        robot.keyPress(e.VK_R);
     }
     
     private boolean verificaSePodeMover(String direcao){

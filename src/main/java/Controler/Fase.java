@@ -222,7 +222,6 @@ public class Fase {
             this.addElemento(leftArrow);  
         }
         
-        
         leftArrow = new Arrow("leftArrow.png", "LEFT");
         leftArrow.setPosicao(6, 7);
         this.addElemento(leftArrow);
@@ -230,7 +229,6 @@ public class Fase {
         leftArrow = new Arrow("leftArrow.png", "LEFT");
         leftArrow.setPosicao(10, 3);
         this.addElemento(leftArrow);
-        
         
         //Desenhando a seta virada para a direita
         Arrow rightArrow; 
@@ -249,7 +247,6 @@ public class Fase {
         rightArrow = new Arrow("rightArrow.png", "RIGHT");
         rightArrow.setPosicao(10, 7);
         this.addElemento(rightArrow);
-        
         
         //Desenhando quadrados laranjas
         OrangeSquare orangeSquare; 

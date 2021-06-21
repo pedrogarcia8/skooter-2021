@@ -5,7 +5,6 @@ import Auxiliar.Desenhador;
 import java.util.ArrayList;
 import java.util.Random;
 
-
 public class Monster extends Elemento{
     private Random r;
     private int iIntevalo = 0;
@@ -19,7 +18,9 @@ public class Monster extends Elemento{
     
     public void autoDesenho(){
         this.iIntevalo++;
-        if(this.iIntevalo == Consts.DIFICULDADE * 3){
+        //Determina o atraso no movimento dos monstros
+        //Caracterizando a "dificuldade" do jogo
+        if(this.iIntevalo == Consts.DIFICULDADE){
             this.iIntevalo = 0;
             int iDirecao = r.nextInt(4);
 

@@ -12,5 +12,4 @@ public class Arrow extends Elemento{
     public void autoDesenho(){ 
         super.autoDesenho();  
     }
-    
 }

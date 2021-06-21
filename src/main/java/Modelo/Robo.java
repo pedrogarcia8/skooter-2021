@@ -22,24 +22,6 @@ public class Robo extends Elemento implements Serializable{
     }
     
     public void autoDesenho(){
-        /*if(bRight){
-            this.setPosicao(pPosicao.getLinha()+1, pPosicao.getColuna());
-        }else{
-            this.setPosicao(pPosicao.getLinha()-1, pPosicao.getColuna());
-        }
-        
-        /*if(bRight){
-            this.setPosicao(pPosicao.getLinha(), pPosicao.getColuna()-1);
-        }else{
-            this.setPosicao(pPosicao.getLinha(), pPosicao.getColuna()+1);
-        }
-        
-        if(bRight){
-            this.setPosicao(pPosicao.getLinha()+1, pPosicao.getColuna());
-        }else{
-            this.setPosicao(pPosicao.getLinha(), pPosicao.getColuna()-1);
-        }*/
-        
         super.autoDesenho();
         bRight = !bRight;
     }

@@ -6,10 +6,6 @@ import Modelo.Hero;
 import Auxiliar.Posicao;
 import java.util.ArrayList;
 
-/**
- *
- * @author junio
- */
 public class ControleDeJogo {
     private int iVida;
     private int iPontuacao;

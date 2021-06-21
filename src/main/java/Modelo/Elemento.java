@@ -12,11 +12,10 @@ import java.io.Serializable;
 import javax.swing.ImageIcon;
 
 public abstract class Elemento implements Serializable {
-
     protected ImageIcon iImage;
     protected Posicao pPosicao;
     protected boolean bTransponivel; /*Pode passar por cima*/
-    protected boolean bMortal;       /*Se encostar, morre*/
+    protected boolean bMortal; /*Se encostar, morre*/
     protected boolean bColetavel; //Se é coletável
     protected boolean destroy; //Se apertar espaço destroi
     protected boolean arrow; // Se é uma seta

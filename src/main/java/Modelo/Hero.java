@@ -10,11 +10,8 @@ import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
-/**
- *
- * @author Junio
- */
 public class Hero extends Elemento implements Serializable{
+    
     public Hero(String sNomeImagePNG) {
         super(sNomeImagePNG);
     }

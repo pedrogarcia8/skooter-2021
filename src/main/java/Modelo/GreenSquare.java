@@ -11,5 +11,4 @@ public class GreenSquare extends Elemento{
     public void autoDesenho(){ 
         super.autoDesenho();
     }
-    
 }
