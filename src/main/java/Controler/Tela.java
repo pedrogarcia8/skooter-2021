@@ -263,7 +263,7 @@ public class Tela extends javax.swing.JFrame implements KeyListener {
     public void keyReleased(KeyEvent e) {
     }
     
-    public void moveSquare(KeyEvent e, String tecla){
+    public void moveSquare(KeyEvent e, String tecla){ // Move o quadrado verde, se possível
         for(int i = 0; i < this.eElementos.size(); i++){
             if(this.eElementos.get(i).getDestroy()){
                 if((this.hHero.getPosicao().getLinha()+1 == this.eElementos.get(i).getPosicao().getLinha())  &&
@@ -310,7 +310,7 @@ public class Tela extends javax.swing.JFrame implements KeyListener {
         this.hHero = this.fase.getHero();
     }
     
-    private boolean verificaSePodeMover(String direcao){
+    private boolean verificaSePodeMover(String direcao){ // Verifica se pode mover o quadrado verde
         int i = 0;
         for(i = 0; i < this.eElementos.size(); i++){
             if("DOWN".equals(direcao)){
@@ -338,7 +338,7 @@ public class Tela extends javax.swing.JFrame implements KeyListener {
             return false;
     }
     
-    private void moveArrow(String tecla){
+    private void moveArrow(String tecla){ // Move o herói conforme a seta
         for(int i = 0; i < this.eElementos.size(); i++){
             if(this.eElementos.get(i).isArrow()){
                 if(((this.hHero.getPosicao().getLinha() == this.eElementos.get(i).getPosicao().getLinha())  &&
