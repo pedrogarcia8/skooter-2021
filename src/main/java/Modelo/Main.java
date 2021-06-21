@@ -2,15 +2,11 @@ package Modelo;
 
 import Controler.Tela;
 
-/**
- *
- * @author junio
- */
-public class Main {
+//Jogo feito por:
+//Pedro Garcia
+//Thiago Marafeli
 
-    /**
-     * @param args the command line arguments
-     */
+public class Main {
     public static void main(String[] args) {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {

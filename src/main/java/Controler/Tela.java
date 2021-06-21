@@ -19,6 +19,7 @@ public class Tela extends javax.swing.JFrame implements KeyListener {
     private ArrayList<Elemento> eElementos;
     private ControleDeJogo cControle = new ControleDeJogo();
     private Graphics g2;
+    private Fase fase;
     /**
      * Creates new form
      */
@@ -35,32 +36,13 @@ public class Tela extends javax.swing.JFrame implements KeyListener {
         /*Este array vai guardar os elementos graficos*/
         this.eElementos = new ArrayList<Elemento>(121);
       
-        /*Fase primeiraFase = new Fase(1);
-        this.eElementos = primeiraFase.getFase();
-        this.hHero = primeiraFase.getHero(); 
-        this.blueRobot = primeiraFase.getBlueRobot();
-        this.yellowRobot = primeiraFase.getYellowRobot(); 
-        this.pinkRobot = primeiraFase.getPinkRobot();
-        this.greenRobot = primeiraFase.getGreenRobot();*/
-        
-        Fase segundaFase = new Fase(2);
-        this.eElementos = segundaFase.getFase();
-        this.hHero = segundaFase.getHero();
-        this.hHero = segundaFase.getHero(); 
-        this.blueRobot = segundaFase.getBlueRobot();
-        this.yellowRobot = segundaFase.getYellowRobot(); 
-        this.pinkRobot = segundaFase.getPinkRobot();
-        this.greenRobot = segundaFase.getGreenRobot();
-        
-        /*Fase terceiraFase = new Fase(3);
-        this.eElementos = terceiraFase.getFase();
-        this.hHero = terceiraFase.getHero();
-        this.hHero = terceiraFase.getHero(); 
-        this.blueRobot = terceiraFase.getBlueRobot();
-        this.yellowRobot = terceiraFase.getYellowRobot(); 
-        this.pinkRobot = terceiraFase.getPinkRobot();
-        this.greenRobot = terceiraFase.getGreenRobot();*/
-        
+        this.fase = new Fase();
+        this.eElementos = this.fase.getElementosFase(1);
+        this.hHero = this.fase.getHero(); 
+        this.blueRobot = this.fase.getBlueRobot();
+        this.yellowRobot = this.fase.getYellowRobot(); 
+        this.pinkRobot = this.fase.getPinkRobot();
+        this.greenRobot = this.fase.getGreenRobot();
     }
 
 /*--------------------------------------------------*/
@@ -100,6 +82,26 @@ public class Tela extends javax.swing.JFrame implements KeyListener {
         if (!this.eElementos.isEmpty()) {
             this.cControle.desenhaTudo(eElementos);
             this.cControle.processaTudo(eElementos);
+            //Verfica se a fase já terminou
+            if(this.cControle.faseTerminou(eElementos)){
+                //Avança de fase
+                this.resetaFase(this.fase.getFaseAtual()+1);
+                //Caso a próxima fase seja a última
+                if(this.fase.getFaseAtual() == Consts.NUM_FASES){
+                    System.out.println("\nVocê zerou o jogo!");
+                    System.out.println("Pontuação deste jogo: " + this.cControle.getPontuacao());
+                }
+            //Verifica se o jogador perdeu todas as suas vidas
+            }else if(this.cControle.estaMorto()){
+                this.cControle.resetaVida();
+                this.cControle.resetaPontuacao();
+                this.resetaFase(1);
+                System.out.println("\nO heroi morreu! Reiniciando o jogo!\n");
+            //Verifica se o jogador perdeu uma vida na rodada atual
+            }else if(this.cControle.perdeuVida()){
+                this.cControle.resetaPontuacao();
+                this.resetaFase(this.fase.getFaseAtual());
+            }
         }
 
         g.dispose();
@@ -121,81 +123,85 @@ public class Tela extends javax.swing.JFrame implements KeyListener {
         timer.schedule(redesenhar, 0, Consts.FRAME_INTERVAL);
         
     }
-
+    
+    //Movimento do heroi pode ser feito pelas setas ou pelo WASD
+    //Tecla E finaliza o jogo
+    //Tecla R reinicia o jogo
+    //Teclas 1-9 avançama para a respectiva fase
+    //Espaço come o bloco adjacente
     public void keyPressed(KeyEvent e) {
+        int tecla = e.getKeyCode();
         /*Movimento do heroi via teclado*/
-        if (e.getKeyCode() == KeyEvent.VK_UP) {
-            moveGreenSquare(e, "UP");   
-            try {
-                killHero(e);
-            } catch (AWTException ex) {
-                System.out.println(ex);
-            }
+        if (tecla == KeyEvent.VK_UP || tecla == KeyEvent.VK_W) {
+            moveSquare(e, "UP");   
             this.moveArrow("UP");
             hHero.moveUp();
-        } else if (e.getKeyCode() == KeyEvent.VK_DOWN) {
-            moveGreenSquare(e, "DOWN");
-            try {
-                killHero(e);
-            } catch (AWTException ex) {
-                System.out.println(ex);
-            }
+            hHero.setDirection("UP");
+        } else if (tecla == KeyEvent.VK_DOWN || tecla == KeyEvent.VK_S) {
+            moveSquare(e, "DOWN");
             this.moveArrow("DOWN");
             hHero.moveDown();
-        } else if (e.getKeyCode() == KeyEvent.VK_LEFT) {
-            moveGreenSquare(e, "LEFT");
-            try {
-                killHero(e);
-            } catch (AWTException ex) {
-                System.out.println(ex);
-            }
+            hHero.setDirection("DOWN");
+        } else if (tecla == KeyEvent.VK_LEFT || tecla == KeyEvent.VK_A) {
+            moveSquare(e, "LEFT");
             this.moveArrow("LEFT");
             hHero.moveLeft();
-        } else if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
-            moveGreenSquare(e, "RIGHT");
-            try {
-                killHero(e);
-            } catch (AWTException ex) {
-                System.out.println(ex);
-            }
+            hHero.setDirection("LEFT");
+        } else if (tecla == KeyEvent.VK_RIGHT || tecla == KeyEvent.VK_D) {
+            moveSquare(e, "RIGHT");
             this.moveArrow("RIGHT");
             hHero.moveRight();
-        } else if (e.getKeyCode() == KeyEvent.VK_R) {
-            Fase primeiraFase = new Fase(1);
-            this.eElementos = primeiraFase.getFase();
-            hHero = primeiraFase.getHero();
-        }else if(e.getKeyCode() == KeyEvent.VK_SPACE){
+            hHero.setDirection("RIGHT");
+        } else if (tecla == KeyEvent.VK_R) {
+            this.cControle.resetaPontuacao();
+            this.eElementos = this.fase.getElementosFase(1);
+            this.hHero = this.fase.getHero();
+        } else if(tecla == KeyEvent.VK_E){
+            System.out.println("\nFim de jogo!");
+            System.out.println("Jogo feito por:");
+            System.out.println("Pedro Garcia");
+            System.out.println("Thiago Marafeli");
+            System.out.println("\nSua pontuação final: " + this.cControle.getPontuacao());
+            System.exit(0);
+        } else if(tecla >= KeyEvent.VK_1 && tecla <= Consts.NUM_FASES + 48){
+            this.eElementos = this.fase.getElementosFase(tecla - 48);
+            this.hHero = this.fase.getHero();
+        } else if(tecla == KeyEvent.VK_SPACE){
             for(int i = 0; i < this.eElementos.size(); i++){
                 if(this.eElementos.get(i).getDestroy()){
-                    if((this.hHero.getPosicao().getLinha()+1 == this.eElementos.get(i).getPosicao().getLinha()) &&
-                       (this.hHero.getPosicao().getColuna()  == this.eElementos.get(i).getPosicao().getColuna())){
-                        Desenhador.getTelaDoJogo().removeElemento(this.eElementos.get(i));
-                        break;
-                    }else{
+                    switch(this.hHero.getDirection()){
+                        //Norte
+                        case "UP":
                         if((hHero.getPosicao().getLinha()-1 == this.eElementos.get(i).getPosicao().getLinha()) &&
-                           (hHero.getPosicao().getColuna()  == this.eElementos.get(i).getPosicao().getColuna())){
+                           (hHero.getPosicao().getColuna()  == this.eElementos.get(i).getPosicao().getColuna()))
                             Desenhador.getTelaDoJogo().removeElemento(this.eElementos.get(i));
-                            break;
-                        }else{
+                        break;
+
+                        //Leste
+                        case "RIGHT":
                             if((hHero.getPosicao().getLinha()     == this.eElementos.get(i).getPosicao().getLinha()) &&
-                               (hHero.getPosicao().getColuna()+1  == this.eElementos.get(i).getPosicao().getColuna())){
+                               (hHero.getPosicao().getColuna()+1  == this.eElementos.get(i).getPosicao().getColuna()))
                                 Desenhador.getTelaDoJogo().removeElemento(this.eElementos.get(i));
-                                break;
-                            }else{
-                                if((hHero.getPosicao().getLinha()     == this.eElementos.get(i).getPosicao().getLinha()) &&
-                                   (hHero.getPosicao().getColuna()-1  == this.eElementos.get(i).getPosicao().getColuna())){
-                                    Desenhador.getTelaDoJogo().removeElemento(this.eElementos.get(i));
-                                    break;
-                                }
-                            }
-                        }
+                        break;
+                        //Sul
+                        case "DOWN":
+                            if((this.hHero.getPosicao().getLinha()+1 == this.eElementos.get(i).getPosicao().getLinha()) &&
+                               (this.hHero.getPosicao().getColuna()  == this.eElementos.get(i).getPosicao().getColuna()))
+                                Desenhador.getTelaDoJogo().removeElemento(this.eElementos.get(i));
+                        break;
+                        //Oeste
+                        case "LEFT":
+                            if((hHero.getPosicao().getLinha()     == this.eElementos.get(i).getPosicao().getLinha()) &&
+                               (hHero.getPosicao().getColuna()-1  == this.eElementos.get(i).getPosicao().getColuna()))
+                                Desenhador.getTelaDoJogo().removeElemento(this.eElementos.get(i));
+                        break;
                     }
                 }
             }
         }
         
         /*Se o heroi for para uma posicao invalida, sobre um elemento intransponivel, volta para onde estava*/
-        if (!cControle.ehPosicaoValida(this.eElementos,hHero.getPosicao())) {
+        if (!cControle.ehPosicaoValida(this.eElementos,hHero)) {
             hHero.voltaAUltimaPosicao();
         }
 
@@ -257,12 +263,12 @@ public class Tela extends javax.swing.JFrame implements KeyListener {
     public void keyReleased(KeyEvent e) {
     }
     
-    public void moveGreenSquare(KeyEvent e, String tecla){
+    public void moveSquare(KeyEvent e, String tecla){
         for(int i = 0; i < this.eElementos.size(); i++){
             if(this.eElementos.get(i).getDestroy()){
                 if((this.hHero.getPosicao().getLinha()+1 == this.eElementos.get(i).getPosicao().getLinha())  &&
                    (this.hHero.getPosicao().getColuna()  == this.eElementos.get(i).getPosicao().getColuna()) && 
-                   (tecla == "DOWN")){         
+                   ("DOWN".equals(tecla))){         
                         if(this.verificaSePodeMover("DOWN")){
                             this.eElementos.get(i).moveDown();
                             break;
@@ -270,7 +276,7 @@ public class Tela extends javax.swing.JFrame implements KeyListener {
                     }else{
                         if((this.hHero.getPosicao().getLinha()-1 == this.eElementos.get(i).getPosicao().getLinha())  &&
                            (hHero.getPosicao().getColuna()       == this.eElementos.get(i).getPosicao().getColuna()) && 
-                           (tecla == "UP")){
+                           ("UP".equals(tecla))){
                                 if(this.verificaSePodeMover("UP")){
                                     this.eElementos.get(i).moveUp();
                                     break;
@@ -278,7 +284,7 @@ public class Tela extends javax.swing.JFrame implements KeyListener {
                         }else{
                             if((hHero.getPosicao().getLinha()     == this.eElementos.get(i).getPosicao().getLinha())  &&
                                (hHero.getPosicao().getColuna()+1  == this.eElementos.get(i).getPosicao().getColuna()) && 
-                               (tecla == "RIGHT")){
+                               ("RIGHT".equals(tecla))){
                                     if(this.verificaSePodeMover("RIGHT")){
                                         this.eElementos.get(i).moveRight();
                                         break;
@@ -286,7 +292,7 @@ public class Tela extends javax.swing.JFrame implements KeyListener {
                             }else{
                                 if((hHero.getPosicao().getLinha()     == this.eElementos.get(i).getPosicao().getLinha())  &&
                                    (hHero.getPosicao().getColuna()-1  == this.eElementos.get(i).getPosicao().getColuna()) && 
-                                   (tecla == "LEFT")){
+                                   ("LEFT".equals(tecla))){
                                         if(this.verificaSePodeMover("LEFT")){
                                             this.eElementos.get(i).moveLeft();
                                             break;
@@ -299,52 +305,23 @@ public class Tela extends javax.swing.JFrame implements KeyListener {
         }
     }
     
-    public void killHero(KeyEvent e) throws AWTException{
-        for(int i = 0; i < this.eElementos.size(); i++){
-            if(this.eElementos.get(i).getMortal()){
-                    if(((this.hHero.getPosicao().getLinha()+1 == this.eElementos.get(i).getPosicao().getLinha()) &&
-                       (this.hHero.getPosicao().getColuna() == this.eElementos.get(i).getPosicao().getColuna())) &&
-                       (e.getKeyCode() == KeyEvent.VK_UP)){
-                            this.pressR(e);
-                            break;
-                    }else if(((this.hHero.getPosicao().getLinha()-1 == this.eElementos.get(i).getPosicao().getLinha()) &&
-                            (this.hHero.getPosicao().getColuna() == this.eElementos.get(i).getPosicao().getColuna())) && 
-                            (e.getKeyCode() == KeyEvent.VK_DOWN)){
-                              this.pressR(e);
-                              break;
-                    }else if(((this.hHero.getPosicao().getLinha() == this.eElementos.get(i).getPosicao().getLinha()) &&
-                            (this.hHero.getPosicao().getColuna()+1 == this.eElementos.get(i).getPosicao().getColuna())) && 
-                            (e.getKeyCode() == KeyEvent.VK_RIGHT)){
-                              this.pressR(e);
-                              break;    
-                    }else if(((this.hHero.getPosicao().getLinha() == this.eElementos.get(i).getPosicao().getLinha()) &&
-                      (this.hHero.getPosicao().getColuna()-1 == this.eElementos.get(i).getPosicao().getColuna())) &&
-                      (e.getKeyCode() == KeyEvent.VK_LEFT)){
-                                this.pressR(e);
-                                break;
-                    } 
-            }
-        }
-    }
-    
-    private void pressR(KeyEvent e) throws AWTException{
-        Robot robot = new Robot();
-        robot.delay(150);
-        robot.keyPress(e.VK_R);
+    private void resetaFase(int fase){
+        this.eElementos = this.fase.getElementosFase(fase);
+        this.hHero = this.fase.getHero();
     }
     
     private boolean verificaSePodeMover(String direcao){
         int i = 0;
         for(i = 0; i < this.eElementos.size(); i++){
-            if(direcao == "DOWN"){
+            if("DOWN".equals(direcao)){
                 if(this.eElementos.get(i).getPosicao().getLinha() == this.hHero.getPosicao().getLinha()+2 &&
                    this.eElementos.get(i).getPosicao().getColuna() == this.hHero.getPosicao().getColuna())
                         break;
-            }else if(direcao == "UP"){
+            }else if("UP".equals(direcao)){
                 if(this.eElementos.get(i).getPosicao().getLinha() == this.hHero.getPosicao().getLinha()-2 &&
                    this.eElementos.get(i).getPosicao().getColuna() == this.hHero.getPosicao().getColuna())
                         break;
-            }else if(direcao == "LEFT"){
+            }else if("LEFT".equals(direcao)){
                 if(this.eElementos.get(i).getPosicao().getLinha() == this.hHero.getPosicao().getLinha() &&
                    this.eElementos.get(i).getPosicao().getColuna() == this.hHero.getPosicao().getColuna()-2)
                         break;
@@ -361,115 +338,39 @@ public class Tela extends javax.swing.JFrame implements KeyListener {
             return false;
     }
     
-    private void moveMonster(Monster monster){
-        boolean right = false;
-        boolean left = false;
-        boolean up = false;
-        boolean down = false;
-        int i;
-        
-        for(i = 0; i < this.eElementos.size(); i++){
-            if((monster.getPosicao().getLinha()-1 == this.eElementos.get(i).getPosicao().getLinha())  &&
-            (monster.getPosicao().getColuna()  == this.eElementos.get(i).getPosicao().getColuna())){
-                System.out.println("DOWN");
-                if(monster.getPosicao().getLinha() != 10){
-                    down = true;
-                    right = false;
-                    left = false;
-                    up = false;
-                    break;
-                }     
-            }
-        }
-        for(i = 0; i < this.eElementos.size(); i++){
-            if((monster.getPosicao().getLinha()+1 == this.eElementos.get(i).getPosicao().getLinha())  &&
-              (monster.getPosicao().getColuna()  == this.eElementos.get(i).getPosicao().getColuna())){
-                System.out.println("UP");
-                if(monster.getPosicao().getLinha() != 0){
-                    up = true;
-                    down = false;
-                    right = false;
-                    left = false;
-                    break;
-                }
-            }             
-        }
-        for(i = 0; i < this.eElementos.size(); i++){
-            if((monster.getPosicao().getLinha()   == this.eElementos.get(i).getPosicao().getLinha())  &&
-            (monster.getPosicao().getColuna()-1  == this.eElementos.get(i).getPosicao().getColuna())){
-                System.out.println("RIGHT");
-                if(monster.getPosicao().getColuna() != 10){
-                    right = true;
-                    down = false;
-                    left = false;
-                    up = false;
-                    break;
-                }
-            }     
-        }
-        for(i = 0; i < this.eElementos.size(); i++){
-            if((monster.getPosicao().getLinha()   == this.eElementos.get(i).getPosicao().getLinha())  &&
-            (monster.getPosicao().getColuna()+1  == this.eElementos.get(i).getPosicao().getColuna())){
-                System.out.println("LEFT");
-                if(monster.getPosicao().getColuna() != 0){
-                    left = true;
-                    down = false;
-                    right = false;
-                    up = false;
-                    break;
-                }
-            }     
-        }
-        
-        System.out.println("UP: "+up+" DOWN: "+down+" LEFT: "+left+" RIGHT: "+right);
-        System.out.println("--------------------------------------");
-        
-        if(right && !left && !up && !down)
-            monster.moveRight();
-        else if(!right && left && !up && !down)
-            monster.moveLeft();
-        else if(!right && !left && up && !down)
-            monster.moveUp();
-        else if(!right && !left && !up && down)
-            monster.moveDown();
-    }
-    
-    private void moveAllMonsters(){
-        this.moveMonster(this.pinkRobot);
-        this.moveMonster(this.blueRobot);
-        this.moveMonster(this.yellowRobot);
-        this.moveMonster(this.greenRobot);
-    }
-    
     private void moveArrow(String tecla){
         for(int i = 0; i < this.eElementos.size(); i++){
             if(this.eElementos.get(i).isArrow()){
                 if(((this.hHero.getPosicao().getLinha() == this.eElementos.get(i).getPosicao().getLinha())  &&
                    (this.hHero.getPosicao().getColuna()-1  == this.eElementos.get(i).getPosicao().getColuna()) && 
-                   (this.eElementos.get(i).getArrowType() == "LEFT")) 
-                        && (tecla == "LEFT")){
+                   ("LEFT".equals(this.eElementos.get(i).getArrowType()))) 
+                        && ("LEFT".equals(tecla))){
                         this.hHero.setPosicao(this.hHero.getPosicao().getLinha(), this.hHero.getPosicao().getColuna()-1);
                         break;
                 }else if(((this.hHero.getPosicao().getLinha() == this.eElementos.get(i).getPosicao().getLinha())  &&
                          (this.hHero.getPosicao().getColuna()+1  == this.eElementos.get(i).getPosicao().getColuna()) &&
-                          (this.eElementos.get(i).getArrowType() == "RIGHT")) 
-                          && (tecla == "RIGHT")){
+                          ("RIGHT".equals(this.eElementos.get(i).getArrowType()))) 
+                          && ("RIGHT".equals(tecla))){
                             this.hHero.setPosicao(this.hHero.getPosicao().getLinha(), this.hHero.getPosicao().getColuna()+1);
                             break;
                 }else if(((this.hHero.getPosicao().getLinha()-1 == this.eElementos.get(i).getPosicao().getLinha())  &&
                          (this.hHero.getPosicao().getColuna()  == this.eElementos.get(i).getPosicao().getColuna()) && 
-                          (this.eElementos.get(i).getArrowType() == "UP"))
-                          && (tecla == "UP")){
+                          ("UP".equals(this.eElementos.get(i).getArrowType())))
+                          && ("UP".equals(tecla))){
                             this.hHero.setPosicao(this.hHero.getPosicao().getLinha()-1, this.hHero.getPosicao().getColuna());
                             break;
                 }else if(((this.hHero.getPosicao().getLinha()+1 == this.eElementos.get(i).getPosicao().getLinha())  &&
                          (this.hHero.getPosicao().getColuna()  == this.eElementos.get(i).getPosicao().getColuna()) && 
-                          (this.eElementos.get(i).getArrowType() == "DOWN"))
-                          && (tecla == "DOWN")){
+                          ("DOWN".equals(this.eElementos.get(i).getArrowType())))
+                          && ("DOWN".equals(tecla))){
                             this.hHero.setPosicao(this.hHero.getPosicao().getLinha()+1, this.hHero.getPosicao().getColuna());
                             break;
                 }
             }
         }
+    }
+
+    public boolean ehPosicaoValida(Monster monster) {
+        return cControle.ehPosicaoValida(this.eElementos, monster);
     }
 }

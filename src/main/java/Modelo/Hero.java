@@ -10,16 +10,24 @@ import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
-/**
- *
- * @author Junio
- */
 public class Hero extends Elemento implements Serializable{
+    //UP|RIGHT|DOWN|LEFT
+    private String sDirection;
+    
     public Hero(String sNomeImagePNG) {
         super(sNomeImagePNG);
+        this.sDirection = "UP";
     }
 
     public void voltaAUltimaPosicao(){
         this.pPosicao.volta();
+    }
+
+    public String getDirection() {
+        return this.sDirection;
+    }
+    
+    public void setDirection(String sDirection){
+        this.sDirection = sDirection;
     }
 }

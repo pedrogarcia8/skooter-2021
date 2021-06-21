@@ -12,20 +12,23 @@ import java.io.Serializable;
 import javax.swing.ImageIcon;
 
 public abstract class Elemento implements Serializable {
-
     protected ImageIcon iImage;
     protected Posicao pPosicao;
     protected boolean bTransponivel; /*Pode passar por cima*/
-    protected boolean bMortal;       /*Se encostar, morre*/
+    protected boolean bMortal; /*Se encostar, morre*/
+    protected boolean bColetavel; //Se é coletável
     protected boolean destroy; //Se apertar espaço destroi
     protected boolean arrow; // Se é uma seta
+    protected int iPontos; //Quantos pontos este elemento vale
     protected String arrowType; // indicação da seta LEFT, RIGHT, UP ou DOWN
        
     protected Elemento(String sNomeImagePNG) {
         this.pPosicao = new Posicao(1, 1);
         this.bTransponivel = true;
         this.bMortal = false;
+        this.bColetavel = false;
         this.arrow = false;
+        this.iPontos = 0;
         try {
             iImage = new ImageIcon(new java.io.File(".").getCanonicalPath() + Consts.PATH + sNomeImagePNG);
             Image img = iImage.getImage();
@@ -88,5 +91,13 @@ public abstract class Elemento implements Serializable {
    
    public String getArrowType(){
        return this.arrowType;
+   }
+   
+   public boolean ehColetavel(){
+       return this.bColetavel;
+   }
+   
+   public int getPontos(){
+       return this.iPontos;
    }
 }
