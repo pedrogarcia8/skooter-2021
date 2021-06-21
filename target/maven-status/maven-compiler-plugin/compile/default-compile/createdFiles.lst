@@ -4,7 +4,6 @@ Modelo\Robo.class
 Controler\Fase.class
 Modelo\Main.class
 Modelo\BunchOfGrapes.class
-Modelo\FakeNews.class
 Modelo\Monster.class
 Modelo\GreenSquare.class
 Modelo\Papaya.class
@@ -19,5 +18,4 @@ Modelo\Main$1.class
 Modelo\Strawberry.class
 Modelo\Cherry.class
 Modelo\OrangeSquare.class
-Modelo\Caveira.class
 Controler\Tela$1.class
