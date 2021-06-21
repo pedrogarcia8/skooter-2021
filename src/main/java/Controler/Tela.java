@@ -136,18 +136,22 @@ public class Tela extends javax.swing.JFrame implements KeyListener {
             moveSquare(e, "UP");   
             this.moveArrow("UP");
             hHero.moveUp();
+            hHero.setDirection("UP");
         } else if (tecla == KeyEvent.VK_DOWN || tecla == KeyEvent.VK_S) {
             moveSquare(e, "DOWN");
             this.moveArrow("DOWN");
             hHero.moveDown();
+            hHero.setDirection("DOWN");
         } else if (tecla == KeyEvent.VK_LEFT || tecla == KeyEvent.VK_A) {
             moveSquare(e, "LEFT");
             this.moveArrow("LEFT");
             hHero.moveLeft();
+            hHero.setDirection("LEFT");
         } else if (tecla == KeyEvent.VK_RIGHT || tecla == KeyEvent.VK_D) {
             moveSquare(e, "RIGHT");
             this.moveArrow("RIGHT");
             hHero.moveRight();
+            hHero.setDirection("RIGHT");
         } else if (tecla == KeyEvent.VK_R) {
             this.cControle.resetaPontuacao();
             this.eElementos = this.fase.getElementosFase(1);
@@ -165,28 +169,32 @@ public class Tela extends javax.swing.JFrame implements KeyListener {
         } else if(tecla == KeyEvent.VK_SPACE){
             for(int i = 0; i < this.eElementos.size(); i++){
                 if(this.eElementos.get(i).getDestroy()){
-                    if((this.hHero.getPosicao().getLinha()+1 == this.eElementos.get(i).getPosicao().getLinha()) &&
-                       (this.hHero.getPosicao().getColuna()  == this.eElementos.get(i).getPosicao().getColuna())){
-                        Desenhador.getTelaDoJogo().removeElemento(this.eElementos.get(i));
-                        break;
-                    }else{
+                    switch(this.hHero.getDirection()){
+                        //Norte
+                        case "UP":
                         if((hHero.getPosicao().getLinha()-1 == this.eElementos.get(i).getPosicao().getLinha()) &&
-                           (hHero.getPosicao().getColuna()  == this.eElementos.get(i).getPosicao().getColuna())){
+                           (hHero.getPosicao().getColuna()  == this.eElementos.get(i).getPosicao().getColuna()))
                             Desenhador.getTelaDoJogo().removeElemento(this.eElementos.get(i));
-                            break;
-                        }else{
+                        break;
+
+                        //Leste
+                        case "RIGHT":
                             if((hHero.getPosicao().getLinha()     == this.eElementos.get(i).getPosicao().getLinha()) &&
-                               (hHero.getPosicao().getColuna()+1  == this.eElementos.get(i).getPosicao().getColuna())){
+                               (hHero.getPosicao().getColuna()+1  == this.eElementos.get(i).getPosicao().getColuna()))
                                 Desenhador.getTelaDoJogo().removeElemento(this.eElementos.get(i));
-                                break;
-                            }else{
-                                if((hHero.getPosicao().getLinha()     == this.eElementos.get(i).getPosicao().getLinha()) &&
-                                   (hHero.getPosicao().getColuna()-1  == this.eElementos.get(i).getPosicao().getColuna())){
-                                    Desenhador.getTelaDoJogo().removeElemento(this.eElementos.get(i));
-                                    break;
-                                }
-                            }
-                        }
+                        break;
+                        //Sul
+                        case "DOWN":
+                            if((this.hHero.getPosicao().getLinha()+1 == this.eElementos.get(i).getPosicao().getLinha()) &&
+                               (this.hHero.getPosicao().getColuna()  == this.eElementos.get(i).getPosicao().getColuna()))
+                                Desenhador.getTelaDoJogo().removeElemento(this.eElementos.get(i));
+                        break;
+                        //Oeste
+                        case "LEFT":
+                            if((hHero.getPosicao().getLinha()     == this.eElementos.get(i).getPosicao().getLinha()) &&
+                               (hHero.getPosicao().getColuna()-1  == this.eElementos.get(i).getPosicao().getColuna()))
+                                Desenhador.getTelaDoJogo().removeElemento(this.eElementos.get(i));
+                        break;
                     }
                 }
             }
