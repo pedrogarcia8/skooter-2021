@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 D:\Documentos\USP\POO\Java\T1\src\main\java\Modelo\Elemento.java
 D:\Documentos\USP\POO\Java\T1\src\main\java\Auxiliar\Posicao.java
 D:\Documentos\USP\POO\Java\T1\src\main\java\Modelo\Strawberry.java
@@ -17,3 +18,24 @@ D:\Documentos\USP\POO\Java\T1\src\main\java\Auxiliar\Consts.java
 D:\Documentos\USP\POO\Java\T1\src\main\java\Modelo\Cherry.java
 D:\Documentos\USP\POO\Java\T1\src\main\java\Modelo\OrangeSquare.java
 D:\Documentos\USP\POO\Java\T1\src\main\java\Modelo\Papaya.java
+=======
+C:\Users\pjgar\Documents\NetBeansProjects\skooter-2021-thiagoversion\src\main\java\Auxiliar\Posicao.java
+C:\Users\pjgar\Documents\NetBeansProjects\skooter-2021-thiagoversion\src\main\java\Modelo\Strawberry.java
+C:\Users\pjgar\Documents\NetBeansProjects\skooter-2021-thiagoversion\src\main\java\Controler\Fase.java
+C:\Users\pjgar\Documents\NetBeansProjects\skooter-2021-thiagoversion\src\main\java\Modelo\BunchOfGrapes.java
+C:\Users\pjgar\Documents\NetBeansProjects\skooter-2021-thiagoversion\src\main\java\Auxiliar\Consts.java
+C:\Users\pjgar\Documents\NetBeansProjects\skooter-2021-thiagoversion\src\main\java\Modelo\Hero.java
+C:\Users\pjgar\Documents\NetBeansProjects\skooter-2021-thiagoversion\src\main\java\Modelo\Main.java
+C:\Users\pjgar\Documents\NetBeansProjects\skooter-2021-thiagoversion\src\main\java\Modelo\Papaya.java
+C:\Users\pjgar\Documents\NetBeansProjects\skooter-2021-thiagoversion\src\main\java\Modelo\Robo.java
+C:\Users\pjgar\Documents\NetBeansProjects\skooter-2021-thiagoversion\src\main\java\Modelo\Cherry.java
+C:\Users\pjgar\Documents\NetBeansProjects\skooter-2021-thiagoversion\src\main\java\Modelo\Elemento.java
+C:\Users\pjgar\Documents\NetBeansProjects\skooter-2021-thiagoversion\src\main\java\Modelo\BlackDiamondSquare.java
+C:\Users\pjgar\Documents\NetBeansProjects\skooter-2021-thiagoversion\src\main\java\Modelo\Monster.java
+C:\Users\pjgar\Documents\NetBeansProjects\skooter-2021-thiagoversion\src\main\java\Modelo\GreenSquare.java
+C:\Users\pjgar\Documents\NetBeansProjects\skooter-2021-thiagoversion\src\main\java\Modelo\Arrow.java
+C:\Users\pjgar\Documents\NetBeansProjects\skooter-2021-thiagoversion\src\main\java\Modelo\OrangeSquare.java
+C:\Users\pjgar\Documents\NetBeansProjects\skooter-2021-thiagoversion\src\main\java\Controler\ControleDeJogo.java
+C:\Users\pjgar\Documents\NetBeansProjects\skooter-2021-thiagoversion\src\main\java\Controler\Tela.java
+C:\Users\pjgar\Documents\NetBeansProjects\skooter-2021-thiagoversion\src\main\java\Auxiliar\Desenhador.java
+>>>>>>> master
