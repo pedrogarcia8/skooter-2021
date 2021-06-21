@@ -2,6 +2,10 @@ package Modelo;
 
 import Controler.Tela;
 
+//Jogo feito por:
+//Pedro Garcia
+//Thiago Marafeli
+
 public class Main {
     public static void main(String[] args) {
         java.awt.EventQueue.invokeLater(new Runnable() {
