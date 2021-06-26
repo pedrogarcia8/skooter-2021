@@ -27,6 +27,7 @@ public class Hero extends Elemento implements Serializable{
         return this.sDirection;
     }
     
+    //Determina pra qual direção o herói está "olhando"
     public void setDirection(String sDirection){
         this.sDirection = sDirection;
     }
