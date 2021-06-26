@@ -91,6 +91,7 @@ public class Tela extends javax.swing.JFrame implements KeyListener {
                     System.out.println("\nVocê zerou o jogo!");
                     System.out.println("Pontuação deste jogo: " + this.cControle.getPontuacao());
                 }
+                this.resetaFase(1);
             //Verifica se o jogador perdeu todas as suas vidas
             }else if(this.cControle.estaMorto()){
                 this.cControle.resetaVida();
