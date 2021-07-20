@@ -44,15 +44,17 @@ public class ControleDeJogo {
     public boolean ehPosicaoValida(ArrayList<Elemento> e, Elemento umElemento){
         Elemento eTemp;
         Hero hHero = (Hero)e.get(0);
+        ObserverVida ovHero = new ObserverVida();
+        
         
         //Quando o monstro avança sobre o personagem
         if(umElemento.getMortal()){
             if(umElemento.getPosicao().estaNaMesmaPosicao(hHero.getPosicao())){
                 removeVida();
                 this.bPerdeuVida = !this.bPerdeuVida;
-                System.out.println("\nVocê perdeu uma vida!");
-                if(this.iVida > 0)
-                    System.out.println("Vidas restantes: " + this.getVida() + "\n");
+                hHero.setVidas(iVida); 
+                hHero.addObserver(ovHero);
+                hHero.notifyObservers(hHero);
                 
                 return false;
             }
@@ -70,9 +72,9 @@ public class ControleDeJogo {
                     if((umElemento == hHero && eTemp.getMortal())){
                         removeVida();
                         this.bPerdeuVida = !this.bPerdeuVida;
-                        System.out.println("\nVocê perdeu uma vida!");
-                        if(this.iVida > 0)
-                            System.out.println("Vidas restantes: " + this.getVida() + "\n");
+                        hHero.setVidas(iVida); 
+                        hHero.addObserver(ovHero);
+                        hHero.notifyObservers(hHero);
                     }
                     return false; /*A posicao p é invalida, pois ha um elemento (i-esimo eTemp) intransponivel lá*/
                 }

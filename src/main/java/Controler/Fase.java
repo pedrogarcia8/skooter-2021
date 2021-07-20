@@ -61,7 +61,7 @@ public class Fase {
     private void cenarioPrimeiraFase(){
         this.eElementos.clear();
         this.iFaseAtual = 1;
-        this.hHero = new Hero("hero.png");  
+        this.hHero = Hero.getInstance();
         this.hHero.setPosicao(4, 4);
         this.addElemento(this.hHero);
 
@@ -140,25 +140,8 @@ public class Fase {
             }
         }
         
-        //Desenhando o cacho de uva
-        BunchOfGrapes bunchOfGrapes = new BunchOfGrapes("bunchOfGrapes.png");
-        bunchOfGrapes.setPosicao(0, 0);
-        this.addElemento(bunchOfGrapes); 
-        
-        //Desenhando o mamão
-        Papaya papaya = new Papaya("papaya.png");
-        papaya.setPosicao(0, 10);
-        this.addElemento(papaya);
-        
-        //Desenhando o morango
-        Strawberry strawberry = new Strawberry("strawberry.png");
-        strawberry.setPosicao(10, 0);
-        this.addElemento(strawberry);
-        
-        //Desenhando a cereja
-        Cherry cherry = new Cherry("cherry.png");
-        cherry.setPosicao(10, 10);
-        this.addElemento(cherry);
+        FruitsFacade fruitsFacade = new FruitsFacade();
+        this.eElementos = fruitsFacade.montar(eElementos, iFaseAtual);
         
         this.blueRobot = new Monster("blueRobot.png");
         this.blueRobot.setPosicao(10, 1);
@@ -180,7 +163,7 @@ public class Fase {
     private void cenarioSegundaFase(){ 
         this.eElementos.clear();
         this.iFaseAtual = 2;
-        this.hHero = new Hero("hero.png");  
+        this.hHero = Hero.getInstance();  
         this.hHero.setPosicao(5, 5);
         this.addElemento(this.hHero);
         
@@ -266,25 +249,8 @@ public class Fase {
             }
         }
         
-        //Desenhando o cacho de uva
-        BunchOfGrapes bunchOfGrapes = new BunchOfGrapes("bunchOfGrapes.png");
-        bunchOfGrapes.setPosicao(1, 5);
-        this.addElemento(bunchOfGrapes); 
-        
-        //Desenhando o mamão
-        Papaya papaya = new Papaya("papaya.png");
-        papaya.setPosicao(5, 1);
-        this.addElemento(papaya);
-        
-        //Desenhando o morango
-        Strawberry strawberry = new Strawberry("strawberry.png");
-        strawberry.setPosicao(5, 9);
-        this.addElemento(strawberry);
-        
-        //Desenhando a cereja
-        Cherry cherry = new Cherry("cherry.png");
-        cherry.setPosicao(9, 5);
-        this.addElemento(cherry);
+        FruitsFacade fruitsFacade = new FruitsFacade();
+        this.eElementos = fruitsFacade.montar(eElementos, iFaseAtual);
         
         this.blueRobot = new Monster("blueRobot.png");
         this.blueRobot.setPosicao(9, 9);
@@ -306,7 +272,7 @@ public class Fase {
     private void cenarioTerceiraFase(){ 
         this.eElementos.clear();
         this.iFaseAtual = 3;
-        this.hHero = new Hero("hero.png");  
+        this.hHero = Hero.getInstance(); 
         this.hHero.setPosicao(5, 5);
         this.addElemento(this.hHero);
         
@@ -360,25 +326,8 @@ public class Fase {
             this.addElemento(blackDiamondSquare);
         }
         
-        //Desenhando o cacho de uva
-        BunchOfGrapes bunchOfGrapes = new BunchOfGrapes("bunchOfGrapes.png");
-        bunchOfGrapes.setPosicao(5, 0);
-        this.addElemento(bunchOfGrapes); 
-        
-        //Desenhando o mamão
-        Papaya papaya = new Papaya("papaya.png");
-        papaya.setPosicao(5, 2);
-        this.addElemento(papaya);
-        
-        //Desenhando o morango
-        Strawberry strawberry = new Strawberry("strawberry.png");
-        strawberry.setPosicao(5, 8);
-        this.addElemento(strawberry);
-        
-        //Desenhando a cereja
-        Cherry cherry = new Cherry("cherry.png");
-        cherry.setPosicao(5, 10);
-        this.addElemento(cherry);
+        FruitsFacade fruitsFacade = new FruitsFacade();
+        this.eElementos = fruitsFacade.montar(eElementos, iFaseAtual);
         
         this.blueRobot = new Monster("blueRobot.png");
         this.blueRobot.setPosicao(0, 5);
@@ -400,7 +349,7 @@ public class Fase {
     private void cenarioQuartaFase() {
         this.eElementos.clear();
         this.iFaseAtual = 4;
-        this.hHero = new Hero("hero.png");  
+        this.hHero = Hero.getInstance();  
         this.hHero.setPosicao(4, 5);
         this.addElemento(this.hHero);
         
@@ -462,26 +411,9 @@ public class Fase {
         orangeSquare = new OrangeSquare("orangeSquare.png");
         orangeSquare.setPosicao(10, 1);
         this.addElemento(orangeSquare);
-
-        //Desenhando o cacho de uva
-        BunchOfGrapes bunchOfGrapes = new BunchOfGrapes("bunchOfGrapes.png");
-        bunchOfGrapes.setPosicao(0, 0);
-        this.addElemento(bunchOfGrapes); 
         
-        //Desenhando o mamão
-        Papaya papaya = new Papaya("papaya.png");
-        papaya.setPosicao(0, 10);
-        this.addElemento(papaya);
-        
-        //Desenhando o morango
-        Strawberry strawberry = new Strawberry("strawberry.png");
-        strawberry.setPosicao(10, 0);
-        this.addElemento(strawberry);
-        
-        //Desenhando a cereja
-        Cherry cherry = new Cherry("cherry.png");
-        cherry.setPosicao(10, 10);
-        this.addElemento(cherry);
+        FruitsFacade fruitsFacade = new FruitsFacade();
+        this.eElementos = fruitsFacade.montar(eElementos, iFaseAtual);
         
         this.blueRobot = new Monster("blueRobot.png");
         this.blueRobot.setPosicao(5, 10);
@@ -503,7 +435,7 @@ public class Fase {
     private void cenarioFinal() {
         this.eElementos.clear();
         this.iFaseAtual = 5;
-        this.hHero = new Hero("hero.png");  
+        this.hHero = Hero.getInstance();  
         this.hHero.setPosicao(5, 5);
         this.addElemento(this.hHero);
 

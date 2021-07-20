@@ -9,9 +9,10 @@ import java.awt.Image;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.io.Serializable;
+import java.util.Observable;
 import javax.swing.ImageIcon;
 
-public abstract class Elemento implements Serializable {
+public abstract class Elemento extends Observable implements Serializable {
     protected ImageIcon iImage;
     protected Posicao pPosicao;
     protected boolean bTransponivel; /*Pode passar por cima*/
