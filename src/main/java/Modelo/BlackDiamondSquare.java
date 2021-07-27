@@ -6,6 +6,7 @@ public class BlackDiamondSquare extends Elemento{
         super(sNomeImagePNG);
         this.bTransponivel = false;
         this.destroy = true;
+        this.movable = true;
     }
     
     public void autoDesenho(){ 

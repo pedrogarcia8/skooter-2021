@@ -10,11 +10,13 @@ import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
-public class Hero extends Elemento implements Serializable{
+public class Hero extends Elemento implements Serializable {
     //UP|RIGHT|DOWN|LEFT
     private String sDirection;
+    private static Hero hero;
+    private int vidas;
     
-    public Hero(String sNomeImagePNG) {
+    private Hero(String sNomeImagePNG) {
         super(sNomeImagePNG);
         this.sDirection = "UP";
     }
@@ -30,5 +32,19 @@ public class Hero extends Elemento implements Serializable{
     //Determina pra qual direção o herói está "olhando"
     public void setDirection(String sDirection){
         this.sDirection = sDirection;
+    }
+    
+    public int getVidas() {
+        return this.vidas;
+    }
+    
+    public void setVidas(int vidas){
+        this.vidas = vidas;
+        this.setChanged();
+    }
+    
+    public static Hero getInstance(){
+        hero = new Hero("hero.png");
+        return hero;
     }
 }
