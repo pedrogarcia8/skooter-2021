@@ -90,8 +90,8 @@ public class Tela extends javax.swing.JFrame implements KeyListener {
                 if(this.fase.getFaseAtual() == Consts.NUM_FASES){
                     System.out.println("\nVocê zerou o jogo!");
                     System.out.println("Pontuação deste jogo: " + this.cControle.getPontuacao());
+                    this.resetaFase(1);
                 }
-                this.resetaFase(1);
             //Verifica se o jogador perdeu todas as suas vidas
             }else if(this.cControle.estaMorto()){
                 this.cControle.resetaVida();
@@ -266,7 +266,7 @@ public class Tela extends javax.swing.JFrame implements KeyListener {
     
     public void moveSquare(KeyEvent e, String tecla){
         for(int i = 0; i < this.eElementos.size(); i++){
-            if(this.eElementos.get(i).getDestroy()){
+            if(this.eElementos.get(i).isMovable()){
                 if((this.hHero.getPosicao().getLinha()+1 == this.eElementos.get(i).getPosicao().getLinha())  &&
                    (this.hHero.getPosicao().getColuna()  == this.eElementos.get(i).getPosicao().getColuna()) && 
                    ("DOWN".equals(tecla))){         

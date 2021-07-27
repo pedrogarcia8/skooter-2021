@@ -281,48 +281,56 @@ public class Fase {
         for(int i = 1; i <= 9; i+=1){
             blackDiamondSquare = new BlackDiamondSquare("blackDiamondSquare.png");
             blackDiamondSquare.setPosicao(1, i);
+            blackDiamondSquare.setDestroy(false);
             this.addElemento(blackDiamondSquare);
         }
        
         for(int i = 1; i <= 9; i+=1){
             blackDiamondSquare = new BlackDiamondSquare("blackDiamondSquare.png");
             blackDiamondSquare.setPosicao(9, i);
+            blackDiamondSquare.setDestroy(false);
             this.addElemento(blackDiamondSquare);
         }
         
         for(int i = 3; i <= 7; i+=1){
             blackDiamondSquare = new BlackDiamondSquare("blackDiamondSquare.png");
             blackDiamondSquare.setPosicao(3, i);
+            blackDiamondSquare.setDestroy(false);
             this.addElemento(blackDiamondSquare);
         }
         
         for(int i = 3; i <= 7; i+=1){
             blackDiamondSquare = new BlackDiamondSquare("blackDiamondSquare.png");
             blackDiamondSquare.setPosicao(7, i);
+            blackDiamondSquare.setDestroy(false);
             this.addElemento(blackDiamondSquare);
         }
         
         for(int i = 2; i <= 8; i+=1){
             blackDiamondSquare = new BlackDiamondSquare("blackDiamondSquare.png");
             blackDiamondSquare.setPosicao(i, 1);
+            blackDiamondSquare.setDestroy(false);
             this.addElemento(blackDiamondSquare);
         }
         
         for(int i = 2; i <= 8; i+=1){
             blackDiamondSquare = new BlackDiamondSquare("blackDiamondSquare.png");
             blackDiamondSquare.setPosicao(i, 9);
+            blackDiamondSquare.setDestroy(false);
             this.addElemento(blackDiamondSquare);
         }
         
         for(int i = 4; i <= 6; i+=1){
             blackDiamondSquare = new BlackDiamondSquare("blackDiamondSquare.png");
             blackDiamondSquare.setPosicao(i, 3);
+            blackDiamondSquare.setDestroy(false);
             this.addElemento(blackDiamondSquare);
         }
         
         for(int i = 4; i <= 6; i+=1){
             blackDiamondSquare = new BlackDiamondSquare("blackDiamondSquare.png");
             blackDiamondSquare.setPosicao(i, 7);
+            blackDiamondSquare.setDestroy(false);
             this.addElemento(blackDiamondSquare);
         }
         

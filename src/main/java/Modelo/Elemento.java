@@ -19,6 +19,7 @@ public abstract class Elemento extends Observable implements Serializable {
     protected boolean bMortal; /*Se encostar, morre*/
     protected boolean bColetavel; //Se é coletável
     protected boolean destroy; //Se apertar espaço destroi
+    protected boolean movable; //Se o elemento eh movivel
     protected boolean arrow; // Se é uma seta
     protected int iPontos; //Quantos pontos este elemento vale
     protected String arrowType; // indicação da seta LEFT, RIGHT, UP ou DOWN
@@ -29,6 +30,7 @@ public abstract class Elemento extends Observable implements Serializable {
         this.bMortal = false;
         this.bColetavel = false;
         this.arrow = false;
+        this.movable = false;
         this.iPontos = 0;
         try {
             iImage = new ImageIcon(new java.io.File(".").getCanonicalPath() + Consts.PATH + sNomeImagePNG);
@@ -57,7 +59,15 @@ public abstract class Elemento extends Observable implements Serializable {
     public boolean setPosicao(int linha, int coluna) {
         return pPosicao.setPosicao(linha, coluna);
     }
-
+   
+   public void setDestroy(boolean b){
+       this.destroy = b;
+   }
+   
+   public void setMovable(boolean b){
+       this.movable = b;
+   }
+   
     public boolean moveUp() {
         return this.pPosicao.moveUp();
     }
@@ -100,5 +110,8 @@ public abstract class Elemento extends Observable implements Serializable {
    
    public int getPontos(){
        return this.iPontos;
+   }
+   public boolean isMovable(){
+       return this.movable;
    }
 }
