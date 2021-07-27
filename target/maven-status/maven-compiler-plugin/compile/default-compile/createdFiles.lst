@@ -15,8 +15,13 @@ Auxiliar\Desenhador.class
 Modelo\BlackDiamondSquare.class
 Modelo\Main$1.class
 Modelo\Strawberry.class
+<<<<<<< HEAD
 Controler\ObserverVida.class
 Modelo\Cherry.class
 Modelo\OrangeSquare.class
 Controler\FruitsFacade.class
+=======
+Modelo\Cherry.class
+Modelo\OrangeSquare.class
+>>>>>>> parte2
 Controler\Tela$1.class
