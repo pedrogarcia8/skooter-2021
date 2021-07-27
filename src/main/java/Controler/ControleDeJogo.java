@@ -4,9 +4,10 @@ import Auxiliar.Consts;
 import Modelo.Elemento;
 import Modelo.Hero;
 import Auxiliar.Posicao;
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class ControleDeJogo {
+public class ControleDeJogo implements Serializable{
     private int iVida;
     private int iPontuacao;
     private boolean bPerdeuVida;

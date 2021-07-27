@@ -9,7 +9,7 @@ import java.util.*;
 import java.util.logging.*;
 import java.util.zip.*;
 
-public class Tela extends javax.swing.JFrame implements KeyListener {
+public class Tela extends javax.swing.JFrame implements KeyListener, Serializable {
 
     private Hero hHero;
     private Monster blueRobot;
@@ -17,13 +17,13 @@ public class Tela extends javax.swing.JFrame implements KeyListener {
     private Monster pinkRobot;
     private Monster greenRobot;
     private ArrayList<Elemento> eElementos;
-    private ControleDeJogo cControle = new ControleDeJogo();
+    private ControleDeJogo cControle;
     private Graphics g2;
     private Fase fase;
     /**
      * Creates new form
      */
-    public Tela() {
+    public Tela() throws IOException, ClassNotFoundException {
         Desenhador.setCenario(this); /*Desenhador funciona no modo estatico*/
         initComponents();
  
@@ -34,10 +34,28 @@ public class Tela extends javax.swing.JFrame implements KeyListener {
                 Consts.RES * Consts.CELL_SIDE + getInsets().top + getInsets().bottom);
 
         /*Este array vai guardar os elementos graficos*/
+        
         this.eElementos = new ArrayList<Elemento>(121);
-      
-        this.fase = new Fase();
-        this.eElementos = this.fase.getElementosFase(1);
+        
+        File arquivo = new File("\\Save\\");
+        if (arquivo.exists()) {
+            FileInputStream entrada = new FileInputStream(arquivo);
+            GZIPInputStream descompactador = new GZIPInputStream(entrada);
+            ObjectInputStream deserializador = new ObjectInputStream(descompactador);
+        
+            this.fase = (Fase) deserializador.readObject();
+            this.cControle = (ControleDeJogo) deserializador.readObject();
+            this.eElementos = this.fase.getElementosFase(0);
+            
+            deserializador.close();
+            descompactador.close();
+            entrada.close();
+        }
+        else{
+            this.fase = new Fase();
+            this.cControle = new ControleDeJogo();
+            this.eElementos = this.fase.getElementosFase(1);
+        }
         this.hHero = this.fase.getHero(); 
         this.blueRobot = this.fase.getBlueRobot();
         this.yellowRobot = this.fase.getYellowRobot(); 
@@ -158,6 +176,32 @@ public class Tela extends javax.swing.JFrame implements KeyListener {
             this.eElementos = this.fase.getElementosFase(1);
             this.hHero = this.fase.getHero();
         } else if(tecla == KeyEvent.VK_E){
+            Scanner leitor = new Scanner(System.in);
+            
+            System.out.println("Da próxima vez que o jogo for iniciado,"
+                    + " o jogo tentará carregar o último save feito (se houver)");
+            System.out.println("Deseja salvar o jogo?");
+            if(leitor.next().equalsIgnoreCase("Sim")){
+                try {
+                    File arquivo = new File("\\Save\\");
+                    arquivo.createNewFile();
+                    FileOutputStream saida = new FileOutputStream(arquivo);
+                    GZIPOutputStream compactador = new GZIPOutputStream(saida);
+                    ObjectOutputStream serializador = new ObjectOutputStream(compactador);
+
+                    serializador.writeObject(this.fase);
+                    serializador.writeObject(this.cControle);
+                    serializador.flush();
+                    serializador.close();
+                    compactador.close();
+                    saida.close();
+                    
+                    System.out.println("Jogo salvo com sucesso!");
+                } catch (Exception exc) {
+                    System.out.println(exc.toString());
+                }
+            }
+            
             System.out.println("\nFim de jogo!");
             System.out.println("Jogo feito por:");
             System.out.println("Pedro Garcia");

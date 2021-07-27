@@ -2,9 +2,10 @@ package Controler;
 
 import Modelo.*;
 import Auxiliar.*;
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Fase {
+public class Fase implements Serializable{
     private Hero hHero;
     private Monster blueRobot;
     private Monster yellowRobot;
@@ -20,6 +21,9 @@ public class Fase {
     
     public ArrayList<Elemento> getElementosFase(int numeroFase){
         switch(numeroFase) {
+            //Case 0 = fase foi carregada de um arquivo
+            case 0:
+                return eElementos;
             case 1:
                 this.cenarioPrimeiraFase();
               break;
@@ -33,7 +37,7 @@ public class Fase {
                 this.cenarioQuartaFase();
               break;
             case 5:
-                this.cenarioFinal();          
+                this.cenarioFinal();
         }
         return eElementos;
     }
